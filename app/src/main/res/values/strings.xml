@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">StyleruApp</string>
+    <string name="enter">Войти</string>
+    <string name="forget">Забыли?</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+</resources>
