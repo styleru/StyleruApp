@@ -21,7 +21,7 @@ public class ProfileItem {
         mPhoto = photo;
     }
 
-    
+
     public String getName() {
         return mName;
     }
