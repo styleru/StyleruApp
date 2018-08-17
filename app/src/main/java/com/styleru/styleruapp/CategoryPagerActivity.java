@@ -37,13 +37,15 @@ public class CategoryPagerActivity extends AppCompatActivity {
                 switch (i){
                     case 0:
                         return CategoryFragment.newInstance();
+                    case 1:
+                        return ProfileFragment.newInstance();
                 }
             return null;
             }
 
             @Override
             public int getCount() {
-                return 1;
+                return 2;
             }
         });
     }
