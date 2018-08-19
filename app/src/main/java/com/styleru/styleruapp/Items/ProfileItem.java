@@ -1,18 +1,22 @@
 package com.styleru.styleruapp.Items;
 
+import java.util.HashMap;
+
 public class ProfileItem {
     private String mName;
     private String mDirections;
     private String mEmail;
     private String mPhoneNumber;
     private String mPhoto;
+    private HashMap<String, String > mLinks;
 
-    public ProfileItem(String name, String directions, String email, String phoneNumber, String photo) {
+    public ProfileItem(String name, String directions, String email, String phoneNumber, String photo, HashMap<String, String> links) {
         mName = name;
         mDirections = directions;
         mEmail = email;
         mPhoneNumber = phoneNumber;
         mPhoto = photo;
+        mLinks = links;
     }
 
     public ProfileItem(String name, String directions, String photo) {
@@ -20,7 +24,6 @@ public class ProfileItem {
         mDirections = directions;
         mPhoto = photo;
     }
-
 
     public String getName() {
         return mName;
@@ -61,4 +64,13 @@ public class ProfileItem {
     public void setPhoto(String photo) {
         mPhoto = photo;
     }
+
+    public HashMap<String, String> getLinks() {
+        return mLinks;
+    }
+
+    public void HashMap(HashMap<String, String> links) {
+        mLinks = links;
+    }
 }
+
