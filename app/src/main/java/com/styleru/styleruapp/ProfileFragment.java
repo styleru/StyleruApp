@@ -26,8 +26,10 @@ public class ProfileFragment extends Fragment {
 
     @BindView(R.id.profile_image_view)
     ImageView mProfileImageView;
-    @BindView(R.id.name_text_view)
-    TextView mNameTextView;
+    @BindView(R.id.first_name_text_view)
+    TextView mFirstNameTextView;
+    @BindView(R.id.second_name_text_view)
+    TextView mSecondNameTextView;
     @BindView(R.id.directions_text_view)
     TextView mDirectionsTextView;
     @BindView(R.id.email_edit_text)
@@ -59,14 +61,15 @@ public class ProfileFragment extends Fragment {
         links.put("Instagram", "ngneecwmk.com");
         links.put("лицокнига", "navalnyi2018.com");
 
-        ProfileItem sampleProfile = new ProfileItem("Vlad Yundin",
+        ProfileItem sampleProfile = new ProfileItem("Vlad","Yundin",
                 "Android",
                 "null@gmail.com",
                 "88005553535",
                 "https://pp.userapi.com/c836234/v836234471/2fc01/CfB0TIHo8zE.jpg?ava=1",
                 links);
 
-        mNameTextView.setText(sampleProfile.getName());
+        mFirstNameTextView.setText(sampleProfile.getFirstName());
+        mSecondNameTextView.setText(sampleProfile.getSecondName());
         mDirectionsTextView.setText(sampleProfile.getDirections());
         mEmailEditText.setText(sampleProfile.getEmail());
         mPhoneEditText.setText(sampleProfile.getPhoneNumber());
@@ -107,7 +110,7 @@ public class ProfileFragment extends Fragment {
                     break;
                 default:
                     //just dog-nail to avoid red line
-                    linkTextViewID = R.id.name_text_view;
+                    linkTextViewID = R.id.first_name_text_view;
                     linkEditTextID = R.id.email_edit_text;
                     break;
             }
@@ -129,4 +132,5 @@ public class ProfileFragment extends Fragment {
         super.onDestroyView();
         mUnbinder.unbind();
     }
+
 }

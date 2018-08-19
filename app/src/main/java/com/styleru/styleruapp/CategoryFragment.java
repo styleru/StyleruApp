@@ -34,7 +34,7 @@ public class CategoryFragment extends Fragment {
 
         //LayoutInflater layoutInflater = getLayoutInflater();
         //getActivity().setTitle("Направления");
-        getActivity().setTitle(Html.fromHtml("<font color='#ffffff'>Направления </font>"));
+        //getActivity().setTitle(Html.fromHtml("<font color='#ffffff'>Направления </font>"));
         for (String element:
                 CATEGORIES) {
             View item = inflater.inflate(R.layout.item_category, mLinearLayout, false);
@@ -53,4 +53,5 @@ public class CategoryFragment extends Fragment {
         super.onDestroyView();
         mUnbinder.unbind();
     }
+
 }
