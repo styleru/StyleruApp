@@ -4,4 +4,8 @@
     <string name="forget">Забыли?</string>
     <string name="password">Пароль</string>
     <string name="login">Логин</string>
+    <string name="profile">Профиль</string>
+    <string name="events">События</string>
+    <string name="people">Люди</string>
+    <string name="directions">Направления</string>
 </resources>

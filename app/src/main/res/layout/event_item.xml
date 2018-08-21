@@ -2,12 +2,11 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/item_person_image_view"
+        android:id="@+id/item_event_image_view"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginStart="8dp"
@@ -16,23 +15,23 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/item_name_text_view"
+        android:id="@+id/item_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/item_person_image_view"
+        app:layout_constraintStart_toEndOf="@+id/item_event_image_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_directions_text_vew"
+        android:id="@+id/item_info_text_vew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/item_person_image_view" />
+        app:layout_constraintStart_toEndOf="@+id/item_event_image_view" />
 
 </android.support.constraint.ConstraintLayout>

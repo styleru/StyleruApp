@@ -1,21 +1,19 @@
 package com.styleru.styleruapp;
 
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.Items.ProfileItem;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import javax.microedition.khronos.opengles.GL;
 
 public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.ViewHolder> {
     private LayoutInflater mLayoutInflater;
@@ -38,6 +36,9 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
         ProfileItem item = mProfileItemList.get(i);
         viewHolder.mDirectionsTextView.setText(item.getDirections());
         viewHolder.mNameTextView.setText(item.getFirstName());
+        Glide.with(viewHolder.mPersonImageView.getContext())
+                .load("https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg")
+                .into(viewHolder.mPersonImageView);
     }
     @Override
     public int getItemCount() {

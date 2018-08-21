@@ -14,7 +14,6 @@ import com.styleru.styleruapp.Items.ProfileItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +21,7 @@ import butterknife.Unbinder;
 
 public class PeopleFragment extends Fragment {
     Unbinder mUnbinder;
-    @BindView(R.id.people_recycler_view)
+    @BindView(R.id.single_recycler_view)
     RecyclerView mRecyclerView;
 
     public static Fragment newInstance(){
@@ -33,7 +32,7 @@ public class PeopleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_people, container, false);
+        View view = inflater.inflate(R.layout.fragment_single_recycler_view, container, false);
         mUnbinder = ButterKnife.bind(this, view);
         ProfileItem sampleProfile = new ProfileItem("dolphin", "web", "https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg");
         List<ProfileItem> mProfiles = new ArrayList<>();
