@@ -2,6 +2,8 @@ package com.styleru.styleruapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.SharedMemory;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -32,6 +34,16 @@ public class CategoryPagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category_pager);
 
         init();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.APP_PREFERENCES, MODE_PRIVATE);
+        if (sharedPreferences.getString(LoginActivity.ACCESS_TOKEN, null)== null){
+            Intent intent = new Intent(CategoryPagerActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void init(){

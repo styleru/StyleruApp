@@ -16,9 +16,9 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES = "settings";
-    private final String LOGIN = "login";
-    private final String PASSWORD = "password";
-    private final String ACCESS_TOKEN = "token";
+    public static final String LOGIN = "login";
+    public static final String PASSWORD = "password";
+    public static final String ACCESS_TOKEN = "token";
     private String mLogin;
     private String mPassword;
 
