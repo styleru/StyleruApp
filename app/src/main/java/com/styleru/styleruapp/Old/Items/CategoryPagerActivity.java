@@ -1,9 +1,8 @@
-package com.styleru.styleruapp;
+package com.styleru.styleruapp.Old.Items;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.SharedMemory;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -14,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+
+import com.styleru.styleruapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

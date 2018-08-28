@@ -1,4 +1,4 @@
-package com.styleru.styleruapp;
+package com.styleru.styleruapp.Old.Items;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.styleru.styleruapp.Items.ProfileItem;
+import com.styleru.styleruapp.R;
 
 import java.util.List;
-
-import javax.microedition.khronos.opengles.GL;
 
 public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.ViewHolder> {
     private LayoutInflater mLayoutInflater;

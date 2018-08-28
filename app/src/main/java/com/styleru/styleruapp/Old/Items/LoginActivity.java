@@ -1,4 +1,4 @@
-package com.styleru.styleruapp;
+package com.styleru.styleruapp.Old.Items;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.styleru.styleruapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

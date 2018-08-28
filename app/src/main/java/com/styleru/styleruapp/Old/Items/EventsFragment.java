@@ -1,4 +1,4 @@
-package com.styleru.styleruapp;
+package com.styleru.styleruapp.Old.Items;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.styleru.styleruapp.Items.ProfileItem;
+import com.styleru.styleruapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class PeopleFragment extends Fragment {
-    Unbinder mUnbinder;
+public class EventsFragment extends Fragment{
+    private Unbinder mUnbinder;
     @BindView(R.id.single_recycler_view)
     RecyclerView mRecyclerView;
 
     public static Fragment newInstance(){
-        PeopleFragment fragment = new PeopleFragment();
+        EventsFragment fragment = new EventsFragment();
         return fragment;
     }
 
@@ -34,12 +34,12 @@ public class PeopleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_single_recycler_view, container, false);
         mUnbinder = ButterKnife.bind(this, view);
-        ProfileItem sampleProfile = new ProfileItem("dolphin", "web", "https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg");
-        List<ProfileItem> mProfiles = new ArrayList<>();
+        EventItem sampleProfile = new EventItem("https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Bufotes_oblongus.jpg/275px-Bufotes_oblongus.jpg", "java meetup", "31.12.2018", "red square");
+        List<EventItem> mProfiles = new ArrayList<>();
         for (int i = 0; i < 100; i++){
             mProfiles.add(sampleProfile);
         }
-        PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, mProfiles);
+        EventDataAdapter adapter = new EventDataAdapter(inflater, mProfiles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapter);
         return view;

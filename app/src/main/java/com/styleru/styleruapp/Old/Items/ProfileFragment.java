@@ -1,4 +1,4 @@
-package com.styleru.styleruapp;
+package com.styleru.styleruapp.Old.Items;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.styleru.styleruapp.Items.ProfileItem;
+import com.styleru.styleruapp.R;
 
 import java.util.HashMap;
 

@@ -7,7 +7,7 @@
     android:gravity="center"
     android:id="@+id/Relative_main"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".Old.Items.LoginActivity">
     <ImageView
         android:layout_width="200dp"
         android:layout_height="227dp"

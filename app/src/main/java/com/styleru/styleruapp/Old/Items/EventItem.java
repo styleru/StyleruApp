@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.Items;
+package com.styleru.styleruapp.Old.Items;
 
 public class EventItem {
     private String mImage;
