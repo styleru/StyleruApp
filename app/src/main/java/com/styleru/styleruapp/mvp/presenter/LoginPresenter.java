@@ -8,10 +8,6 @@ import com.styleru.styleruapp.mvp.interfaces.LoginView;
 import com.styleru.styleruapp.mvp.view.LoginActivity;
 
 public class LoginPresenter extends MvpPresenter<LoginView> {
-    public static final String APP_PREFERENCES = "settings";
-    public static final String LOGIN = "login";
-    public static final String PASSWORD = "password";
-    public static final String ACCESS_TOKEN = "token";
 
     public LoginPresenter() {
     }
