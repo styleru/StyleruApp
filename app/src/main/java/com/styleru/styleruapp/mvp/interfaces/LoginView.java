@@ -8,7 +8,10 @@ import com.styleru.styleruapp.mvp.model.LoginInfo;
 public interface LoginView extends MvpView{
     @StateStrategyType(AddToEndSingleStrategy.class)
     void newIntent();
+    @StateStrategyType(AddToEndSingleStrategy.class)
     LoginInfo getLoginData();
+    @StateStrategyType(AddToEndSingleStrategy.class)
     void passData(LoginInfo loginInfo);
+    @StateStrategyType(AddToEndSingleStrategy.class)
     void forgetPassword();
 }
