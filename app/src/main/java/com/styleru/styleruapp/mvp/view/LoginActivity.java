@@ -17,6 +17,9 @@ import com.styleru.styleruapp.mvp.model.LoginInfo;
 import com.styleru.styleruapp.mvp.interfaces.LoginView;
 import com.styleru.styleruapp.mvp.presenter.LoginPresenter;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,6 +28,8 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public static final String ACCESS_TOKEN = "token";
     @InjectPresenter
     LoginPresenter presenter;
+    @Inject
+    Provider<LoginPresenter> presenterProvider;
 
     @BindView(R.id.login_edit_text) EditText mLoginEditText;
 
@@ -33,6 +38,11 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     @BindView(R.id.forget_text_view) TextView mForgetTextView;
 
     @BindView(R.id.enter_button) Button mEnterButton;
+
+    LoginPresenter providePresenter(){
+        return presenterProvider.get();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +56,10 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.signIn();
+                String login = mLoginEditText.getText().toString();
+                String password = mPasswordEditText.getText().toString();
+                boolean isInfoCorrect= presenter.signIn(login, password);
+                if (isInfoCorrect) newIntent();
             }
         });
         mForgetTextView.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +70,9 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
         });
     }
 
-    @Override
     public void newIntent() {
         Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
         startActivity(intent);
-    }
-
-    @Override
-    public LoginInfo getLoginData() {
-        LoginInfo loginInfo = new LoginInfo(mLoginEditText.getText().toString(),
-                mPasswordEditText.getText().toString());
-        return loginInfo;
     }
 
     @Override
