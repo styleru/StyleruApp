@@ -22,11 +22,9 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public static final String APP_PREFERENCES = "settings";
-    public static final String LOGIN = "login";
-    public static final String PASSWORD = "password";
     public static final String ACCESS_TOKEN = "token";
     @InjectPresenter
-    LoginPresenter mLoginPresenter;
+    LoginPresenter presenter;
 
     @BindView(R.id.login_edit_text) EditText mLoginEditText;
 
@@ -48,7 +46,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mLoginPresenter.signIn();
+                presenter.signIn();
             }
         });
         mForgetTextView.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +74,6 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public void passData(LoginInfo loginInfo) {
         SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
         sharedPreferences.edit()
-                .putString(LOGIN, loginInfo.getLogin())
-                .putString(PASSWORD, loginInfo.getPassword())
                 .putString(ACCESS_TOKEN, loginInfo.getToken())
                 .apply();
 
