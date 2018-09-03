@@ -2,7 +2,7 @@ package com.styleru.styleruapp.LoginActivity;
 
 import android.app.Application;
 
-public class nonameApplication extends Application {
+public class StyleruApplication extends Application {
     private static AppComponent appComponent;
 
     public static AppComponent getAppComponent() {
@@ -21,4 +21,4 @@ public class nonameApplication extends Application {
                 .context(this)
                 .build();
     }
-}2
+}

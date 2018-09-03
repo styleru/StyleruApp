@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.styleru.styleruapp.LoginActivity.StyleruApplication;
 import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.LoginActivity.model.LoginInfo;
@@ -23,13 +24,11 @@ import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger.Module;
 
 public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public static final String APP_PREFERENCES = "settings";
     public static final String ACCESS_TOKEN = "token";
-    //@InjectPresenter
-    @Inject
+    @InjectPresenter
     LoginPresenter presenter;
     @Inject
     Provider<LoginPresenter> presenterProvider;
@@ -41,7 +40,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     @BindView(R.id.forget_text_view) TextView mForgetTextView;
 
     @BindView(R.id.enter_button) Button mEnterButton;
-    //@ProvidePresenter
+    @ProvidePresenter
     LoginPresenter providePresenter(){
         return presenterProvider.get();
     }
@@ -50,7 +49,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        StyleruApplication.getAppComponent().inject(this);
         init();
     }
 

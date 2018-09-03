@@ -17,6 +17,7 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
     public LoginPresenter() {
     }
 
+    @Inject
     public boolean signIn(String login, String password){
         LoginInfo info = new LoginInfo(login, password, FAKE_TOKEN);
         boolean isSuccessful = info.getLogin().equals("guest") && info.getPassword().equals("1234"); // fake check

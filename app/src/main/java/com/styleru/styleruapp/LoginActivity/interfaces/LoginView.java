@@ -9,7 +9,7 @@ import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
-@Component(modules = {LoginInfo.class})
+
 public interface LoginView extends MvpView{
     @StateStrategyType(AddToEndSingleStrategy.class)
     void passData(LoginInfo loginInfo);
