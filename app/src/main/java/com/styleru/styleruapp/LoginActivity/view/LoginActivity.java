@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.mvp.view;
+package com.styleru.styleruapp.LoginActivity.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,22 +11,25 @@ import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.mvp.model.LoginInfo;
-import com.styleru.styleruapp.mvp.interfaces.LoginView;
-import com.styleru.styleruapp.mvp.presenter.LoginPresenter;
+import com.styleru.styleruapp.LoginActivity.model.LoginInfo;
+import com.styleru.styleruapp.LoginActivity.interfaces.LoginView;
+import com.styleru.styleruapp.LoginActivity.presenter.LoginPresenter;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.Module;
 
 public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public static final String APP_PREFERENCES = "settings";
     public static final String ACCESS_TOKEN = "token";
-    @InjectPresenter
+    //@InjectPresenter
+    @Inject
     LoginPresenter presenter;
     @Inject
     Provider<LoginPresenter> presenterProvider;
@@ -38,7 +41,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     @BindView(R.id.forget_text_view) TextView mForgetTextView;
 
     @BindView(R.id.enter_button) Button mEnterButton;
-
+    //@ProvidePresenter
     LoginPresenter providePresenter(){
         return presenterProvider.get();
     }
@@ -65,7 +68,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
         mForgetTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                forgetPassword();
+                //forgetPassword();
             }
         });
     }
@@ -83,9 +86,8 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
                 .apply();
 
     }
-
+/*
     @Override
     public void forgetPassword() {
-
-    }
+    }*/
 }
