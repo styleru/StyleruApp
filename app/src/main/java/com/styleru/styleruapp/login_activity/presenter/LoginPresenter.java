@@ -1,13 +1,15 @@
-package com.styleru.styleruapp.LoginActivity.presenter;
+package com.styleru.styleruapp.login_activity.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.styleru.styleruapp.LoginActivity.model.LoginInfo;
-import com.styleru.styleruapp.LoginActivity.interfaces.LoginView;
+import com.styleru.styleruapp.login_activity.model.LoginInfo;
+import com.styleru.styleruapp.login_activity.interfaces.LoginView;
 
 import javax.inject.Inject;
 
 import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
 @InjectViewState
 public class LoginPresenter extends MvpPresenter<LoginView> {
@@ -16,7 +18,8 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
     @Inject
     public LoginPresenter() {
     }
-
+/*
+//error here
     @Inject
     public boolean signIn(String login, String password){
         LoginInfo info = new LoginInfo(login, password, FAKE_TOKEN);
@@ -26,4 +29,5 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
         }
         return isSuccessful;
     }
+    */
 }

@@ -1,10 +1,7 @@
-package com.styleru.styleruapp.LoginActivity.model;
+package com.styleru.styleruapp.login_activity.model;
 
 import javax.inject.Inject;
 
-import dagger.Module;
-
-@Module
 public class LoginInfo {
     private String login;
     private String password;
@@ -22,27 +19,27 @@ public class LoginInfo {
         this.password = password;
         this.token = token;
     }
-
+    @Inject
     public String getLogin() {
         return login;
     }
-
+    @Inject
     public void setLogin(String login) {
         this.login = login;
     }
-
+    @Inject
     public String getPassword() {
         return password;
     }
-
+    @Inject
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @Inject
     public String getToken() {
         return token;
     }
-
+    @Inject
     public void setToken(String token) {
         this.token = token;
     }

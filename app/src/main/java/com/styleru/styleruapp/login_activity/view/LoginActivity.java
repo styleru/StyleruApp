@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.LoginActivity.view;
+package com.styleru.styleruapp.login_activity.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,12 +12,12 @@ import android.widget.TextView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.styleru.styleruapp.LoginActivity.StyleruApplication;
+import com.styleru.styleruapp.login_activity.styleruApplication;
 import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.LoginActivity.model.LoginInfo;
-import com.styleru.styleruapp.LoginActivity.interfaces.LoginView;
-import com.styleru.styleruapp.LoginActivity.presenter.LoginPresenter;
+import com.styleru.styleruapp.login_activity.model.LoginInfo;
+import com.styleru.styleruapp.login_activity.interfaces.LoginView;
+import com.styleru.styleruapp.login_activity.presenter.LoginPresenter;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -25,13 +25,9 @@ import javax.inject.Provider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends MvpAppCompatActivity implements LoginView {
+public final class LoginActivity extends MvpAppCompatActivity implements LoginView {
     public static final String APP_PREFERENCES = "settings";
     public static final String ACCESS_TOKEN = "token";
-    @InjectPresenter
-    LoginPresenter presenter;
-    @Inject
-    Provider<LoginPresenter> presenterProvider;
 
     @BindView(R.id.login_edit_text) EditText mLoginEditText;
 
@@ -40,6 +36,12 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     @BindView(R.id.forget_text_view) TextView mForgetTextView;
 
     @BindView(R.id.enter_button) Button mEnterButton;
+
+    @InjectPresenter
+    LoginPresenter presenter;
+    @Inject
+    Provider<LoginPresenter> presenterProvider;
+
     @ProvidePresenter
     LoginPresenter providePresenter(){
         return presenterProvider.get();
@@ -49,19 +51,19 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        StyleruApplication.getAppComponent().inject(this);
+        ButterKnife.bind(this);
+        styleruApplication.getAppComponent().inject(this);
         init();
     }
 
-    private void init(){
-        ButterKnife.bind(this);
+    public void init(){
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String login = mLoginEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
-                boolean isInfoCorrect= presenter.signIn(login, password);
-                if (isInfoCorrect) newIntent();
+                //boolean isInfoCorrect= presenter.signIn(login, password);
+                //if (isInfoCorrect) newIntent();
             }
         });
         mForgetTextView.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +73,7 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
             }
         });
     }
-
+@Inject
     public void newIntent() {
         Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
         startActivity(intent);
