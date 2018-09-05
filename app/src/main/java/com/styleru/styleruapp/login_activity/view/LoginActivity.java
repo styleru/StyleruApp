@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.styleru.styleruapp.login_activity.styleruApplication;
+import com.styleru.styleruapp.login_activity.StyleruApplication;
 import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.login_activity.model.LoginInfo;
@@ -52,7 +52,7 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        styleruApplication.getAppComponent().inject(this);
+        StyleruApplication.getAppComponent().inject(this);
         init();
     }
 
