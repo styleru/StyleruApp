@@ -2,7 +2,10 @@ package com.styleru.styleruapp.login_activity;
 
 import android.app.Application;
 
-public final class StyleruApplication extends Application {
+import dagger.BindsInstance;
+import dagger.Component;
+
+public class StyleruApplication extends Application {
     private static AppComponent appComponent;
 
     public static AppComponent getAppComponent() {
@@ -19,7 +22,8 @@ public final class StyleruApplication extends Application {
     private void configureDagger() {
         appComponent = DaggerAppComponent
                 .builder()
-                .context(this)
+                .application(this)
                 .build();
     }
+
 }
