@@ -49,7 +49,7 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        StyleruApplication.getAppComponent().inject(this);
+        StyleruApplication.INSTANCE.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);

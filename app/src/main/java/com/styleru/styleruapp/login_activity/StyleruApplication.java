@@ -8,15 +8,15 @@ import dagger.Component;
 public class StyleruApplication extends Application {
     private static AppComponent appComponent;
 
-    public static AppComponent getAppComponent() {
+    public AppComponent getAppComponent() {
         return appComponent;
     }
-
+    public static StyleruApplication INSTANCE;
     @Override
     public void onCreate() {
         super.onCreate();
-
         configureDagger();
+        INSTANCE = this;
     }
 
     private void configureDagger() {
