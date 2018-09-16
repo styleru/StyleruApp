@@ -2,21 +2,16 @@ package com.styleru.styleruapp.login_activity;
 
 import android.app.Application;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
 public class StyleruApplication extends Application {
     private static AppComponent appComponent;
 
-    public AppComponent getAppComponent() {
+    public static AppComponent getAppComponent() {
         return appComponent;
     }
-    public static StyleruApplication INSTANCE;
     @Override
     public void onCreate() {
         super.onCreate();
         configureDagger();
-        INSTANCE = this;
     }
 
     private void configureDagger() {
