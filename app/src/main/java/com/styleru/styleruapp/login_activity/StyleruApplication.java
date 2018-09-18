@@ -2,6 +2,8 @@ package com.styleru.styleruapp.login_activity;
 
 import android.app.Application;
 
+import com.styleru.styleruapp.di.AppComponent;
+
 public class StyleruApplication extends Application {
     private static AppComponent appComponent;
 

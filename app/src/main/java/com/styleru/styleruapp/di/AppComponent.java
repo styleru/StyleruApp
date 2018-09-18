@@ -1,12 +1,9 @@
-package com.styleru.styleruapp.login_activity;
+package com.styleru.styleruapp.di;
 
 import android.content.Context;
 
-import com.styleru.styleruapp.login_activity.model.LoginInfo;
-import com.styleru.styleruapp.login_activity.presenter.LoginPresenter;
 import com.styleru.styleruapp.login_activity.view.LoginActivity;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;
