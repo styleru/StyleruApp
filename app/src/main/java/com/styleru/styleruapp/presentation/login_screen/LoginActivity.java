@@ -1,6 +1,5 @@
-package com.styleru.styleruapp.login_activity.view;
+package com.styleru.styleruapp.presentation.login_screen;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,12 +11,10 @@ import android.widget.TextView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.styleru.styleruapp.login_activity.StyleruApplication;
-import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
+import com.styleru.styleruapp.StyleruApplication;
+//import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.login_activity.model.LoginInfo;
-import com.styleru.styleruapp.login_activity.interfaces.LoginView;
-import com.styleru.styleruapp.login_activity.presenter.LoginPresenter;
+import com.styleru.styleruapp.domain.entity.login.LoginInfo;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -75,8 +72,8 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
     }
 @Inject
     public void newIntent() {
-        Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
-        startActivity(intent);
+        //Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
+        //startActivity(intent);
     }
 
     @Override

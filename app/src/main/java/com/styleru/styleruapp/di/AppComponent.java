@@ -2,7 +2,7 @@ package com.styleru.styleruapp.di;
 
 import android.content.Context;
 
-import com.styleru.styleruapp.login_activity.view.LoginActivity;
+import com.styleru.styleruapp.presentation.login_screen.LoginActivity;
 
 import javax.inject.Singleton;
 

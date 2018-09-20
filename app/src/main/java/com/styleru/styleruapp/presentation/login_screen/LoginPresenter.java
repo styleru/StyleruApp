@@ -1,15 +1,9 @@
-package com.styleru.styleruapp.login_activity.presenter;
+package com.styleru.styleruapp.presentation.login_screen;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.styleru.styleruapp.login_activity.model.LoginInfo;
-import com.styleru.styleruapp.login_activity.interfaces.LoginView;
 
 import javax.inject.Inject;
-
-import dagger.Component;
-import dagger.Module;
-import dagger.Provides;
 
 @InjectViewState
 public final class LoginPresenter extends MvpPresenter<LoginView> {

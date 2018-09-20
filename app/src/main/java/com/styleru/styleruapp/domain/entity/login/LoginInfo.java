@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.login_activity.model;
+package com.styleru.styleruapp.domain.entity.login;
 
 
 public class LoginInfo {
