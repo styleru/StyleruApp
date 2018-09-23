@@ -1,5 +1,6 @@
 package com.styleru.styleruapp.presentation.login_screen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -59,18 +60,12 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
             public void onClick(View v) {
                 String login = mLoginEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
-                //boolean isInfoCorrect= presenter.signIn(login, password);
-                //if (isInfoCorrect) newIntent();
-            }
-        });
-        mForgetTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //forgetPassword();
+                boolean isInfoCorrect= presenter.signIn(login, password);
+                if (isInfoCorrect) newIntent();
             }
         });
     }
-@Inject
+
     public void newIntent() {
         //Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
         //startActivity(intent);
@@ -84,8 +79,5 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
                 .apply();
 
     }
-/*
-    @Override
-    public void forgetPassword() {
-    }*/
+
 }

@@ -2,6 +2,7 @@ package com.styleru.styleruapp.presentation.login_screen;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.styleru.styleruapp.domain.entity.login.LoginInfo;
 
 import javax.inject.Inject;
 
@@ -10,10 +11,9 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
     private final String FAKE_TOKEN = "dmef2342dmk3mda";
 
     @Inject
-    public LoginPresenter() {
+    LoginPresenter() {
     }
-/*
-//error here
+
     @Inject
     public boolean signIn(String login, String password){
         LoginInfo info = new LoginInfo(login, password, FAKE_TOKEN);
@@ -23,5 +23,5 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
         }
         return isSuccessful;
     }
-    */
+
 }
