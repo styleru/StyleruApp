@@ -2,7 +2,6 @@ package com.styleru.styleruapp.presentation.login_screen;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.styleru.styleruapp.domain.entity.login.LoginInfo;
 
 import javax.inject.Inject;
 
@@ -15,13 +14,10 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
     }
 
     @Inject
-    public boolean signIn(String login, String password){
-        LoginInfo info = new LoginInfo(login, password, FAKE_TOKEN);
-        boolean isSuccessful = info.getLogin().equals("guest") && info.getPassword().equals("1234"); // fake check
+    void signIn(String login, String password){
+        boolean isSuccessful = login.equals("guest") && password.equals("1234"); // fake check
         if (isSuccessful){
-            getViewState().passData(info);
+            // cicerone here
         }
-        return isSuccessful;
     }
-
 }

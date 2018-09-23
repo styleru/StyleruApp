@@ -19,7 +19,6 @@ public interface AppComponent {
         AppComponent build();
 
         @BindsInstance
-        Builder application(Context context);
+        Builder context(Context context);
     }
-
 }

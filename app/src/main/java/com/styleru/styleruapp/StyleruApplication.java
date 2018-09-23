@@ -20,8 +20,7 @@ public class StyleruApplication extends Application {
     private void configureDagger() {
         appComponent = DaggerAppComponent
                 .builder()
-                .application(this)
+                .context(this)
                 .build();
     }
-
 }

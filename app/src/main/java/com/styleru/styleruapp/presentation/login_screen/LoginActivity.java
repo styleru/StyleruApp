@@ -1,7 +1,5 @@
 package com.styleru.styleruapp.presentation.login_screen;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,7 +13,6 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.StyleruApplication;
 //import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.domain.entity.login.LoginInfo;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -24,8 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public final class LoginActivity extends MvpAppCompatActivity implements LoginView {
-    public static final String APP_PREFERENCES = "settings";
-    public static final String ACCESS_TOKEN = "token";
 
     @BindView(R.id.login_edit_text) EditText mLoginEditText;
 
@@ -55,29 +50,10 @@ public final class LoginActivity extends MvpAppCompatActivity implements LoginVi
     }
 
     public void init(){
-        mEnterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String login = mLoginEditText.getText().toString();
-                String password = mPasswordEditText.getText().toString();
-                boolean isInfoCorrect= presenter.signIn(login, password);
-                if (isInfoCorrect) newIntent();
-            }
+        mEnterButton.setOnClickListener(v -> {
+            String login = mLoginEditText.getText().toString();
+            String password = mPasswordEditText.getText().toString();
+            presenter.signIn(login, password);
         });
     }
-
-    public void newIntent() {
-        //Intent intent = new Intent(LoginActivity.this, CategoryPagerActivity.class); //viewpager should be replaced
-        //startActivity(intent);
-    }
-
-    @Override
-    public void passData(LoginInfo loginInfo) {
-        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
-        sharedPreferences.edit()
-                .putString(ACCESS_TOKEN, loginInfo.getToken())
-                .apply();
-
-    }
-
 }
