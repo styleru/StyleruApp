@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                             .putString(ACCESS_TOKEN, SAMPLE_TOKEN)
                             .apply();
 
-                    Intent intent = CategoryPagerActivity.createCategoryPagerActivity(LoginActivity.this);
-                    startActivity(intent);
+                    //Intent intent = CategoryPagerActivity.createCategoryPagerActivity(LoginActivity.this);
+                    //startActivity(intent);
                 }
             }
         });

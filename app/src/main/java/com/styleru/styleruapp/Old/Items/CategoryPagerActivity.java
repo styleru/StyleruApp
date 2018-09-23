@@ -1,3 +1,4 @@
+/*
 package com.styleru.styleruapp.Old.Items;
 
 import android.content.Context;
@@ -123,3 +124,4 @@ public class CategoryPagerActivity extends AppCompatActivity {
         });
     }
 }
+*/
