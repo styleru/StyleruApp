@@ -13,7 +13,6 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
     LoginPresenter() {
     }
 
-    @Inject
     void signIn(String login, String password){
         boolean isSuccessful = login.equals("guest") && password.equals("1234"); // fake check
         if (isSuccessful){
