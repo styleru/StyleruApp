@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
@@ -17,9 +16,6 @@ public class StyleruNavigator extends SupportAppNavigator {
         super(activity, containerId);
     }
 
-    public StyleruNavigator(FragmentActivity activity, FragmentManager fragmentManager, int containerId) {
-        super(activity, fragmentManager, containerId);
-    }
 
     @Override
     public Intent createActivityIntent(Context context, String screenKey, Object data) {
