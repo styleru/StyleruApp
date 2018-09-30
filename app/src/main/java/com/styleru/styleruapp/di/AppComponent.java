@@ -15,6 +15,7 @@ import dagger.Component;
 public interface AppComponent {
     void inject(LoginActivity loginActivity);
 
+
     @Component.Builder
     interface Builder {
         AppComponent build();

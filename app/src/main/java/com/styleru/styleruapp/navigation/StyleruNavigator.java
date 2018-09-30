@@ -9,15 +9,16 @@ import android.util.Log;
 
 import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
 
-import javax.inject.Inject;
-
 import ru.terrakok.cicerone.android.SupportAppNavigator;
 
 public class StyleruNavigator extends SupportAppNavigator {
 
-    @Inject
     public StyleruNavigator(FragmentActivity activity, int containerId) {
         super(activity, containerId);
+    }
+
+    public StyleruNavigator(FragmentActivity activity, FragmentManager fragmentManager, int containerId) {
+        super(activity, fragmentManager, containerId);
     }
 
     @Override
