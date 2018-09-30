@@ -4,7 +4,6 @@ import dagger.Module;
 import dagger.Provides;
 import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.NavigatorHolder;
-import ru.terrakok.cicerone.Router;
 
 @Module
 public final class NavigationModule {
@@ -15,7 +14,7 @@ public final class NavigationModule {
     }
 
     @Provides
-    Router provideRouter(){
+    StyleruRouter provideRouter(){
         return mCicerone.getRouter();
     }
 

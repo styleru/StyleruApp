@@ -1,7 +1,6 @@
 package com.styleru.styleruapp.presentation;
 
-import android.support.v7.app.AppCompatActivity;
-
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.styleru.styleruapp.navigation.StyleruNavigator;
 
 import javax.inject.Inject;
@@ -9,7 +8,7 @@ import javax.inject.Inject;
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends MvpAppCompatActivity {
     @Inject
     NavigatorHolder mNavigatorHolder;
 
