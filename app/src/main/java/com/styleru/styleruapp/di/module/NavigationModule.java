@@ -1,4 +1,6 @@
-package com.styleru.styleruapp.navigation;
+package com.styleru.styleruapp.di.module;
+
+import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import dagger.Module;
 import dagger.Provides;

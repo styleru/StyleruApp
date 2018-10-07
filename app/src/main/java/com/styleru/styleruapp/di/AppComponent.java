@@ -2,7 +2,7 @@ package com.styleru.styleruapp.di;
 
 import android.content.Context;
 
-import com.styleru.styleruapp.navigation.NavigationModule;
+import com.styleru.styleruapp.di.module.NavigationModule;
 import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
 import com.styleru.styleruapp.presentation.login_screen.LoginActivity;
 

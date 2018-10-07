@@ -19,13 +19,13 @@ public class StyleruNavigator extends SupportAppNavigator {
 
     @Override
     public Intent createActivityIntent(Context context, String screenKey, Object data) {
+        Intent intent = null;
         switch (screenKey){
             case ScreenKeys.CATEGORY_ACTIVITY:
                 Log.d("stlnav", "category_activity");
-                return new Intent(context, ChangeCategoryActivity.class);
-
+                intent =  new Intent(context, ChangeCategoryActivity.class);
         }
-        return null;
+        return intent;
     }
 
     @Override
