@@ -1,6 +1,7 @@
-package com.styleru.styleruapp.domain.repository;
+package com.styleru.styleruapp.di.module;
 
-import com.styleru.styleruapp.data.storage.StorageModule;
+import com.styleru.styleruapp.domain.repository.IUserDataRepository;
+import com.styleru.styleruapp.domain.repository.UserDataRepository;
 
 import dagger.Binds;
 import dagger.Module;
