@@ -3,8 +3,7 @@ package com.styleru.styleruapp.presentation.login_screen;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.styleru.styleruapp.data.Provider;
-import com.styleru.styleruapp.data.storage.UserDataStorage;
+import com.styleru.styleruapp.domain.interactor.AuthorizationInteractor;
 import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
 
@@ -14,16 +13,15 @@ import javax.inject.Inject;
 public final class LoginPresenter extends MvpPresenter<LoginView> {
     private final String FAKE_TOKEN = "dmef2342dmk3mda";
     private final StyleruRouter mRouter;
-    private Provider.UserDataStorage mUserDataStorage;
+    public AuthorizationInteractor mInteractor;
     @Inject
-    LoginPresenter(StyleruRouter router) {
+    LoginPresenter(StyleruRouter router, AuthorizationInteractor interactor) {
         this.mRouter = router;
-        mUserDataStorage = new UserDataStorage();
+        this.mInteractor = interactor;
     }
 
-
     void signIn(String login, String password){
-        boolean isSuccessful = mUserDataStorage.isInfoCorrect("guest", "1234"); // fake check
+        boolean isSuccessful = mInteractor.isInfoCorrect(login, password); // fake check
         if (isSuccessful){
             mRouter.navigateTo(ScreenKeys.CATEGORY_ACTIVITY);
         }
