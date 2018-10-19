@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 @InjectViewState
 public final class LoginPresenter extends MvpPresenter<LoginView> {
-    private final String FAKE_TOKEN = "dmef2342dmk3mda";
     private final StyleruRouter mRouter;
     public AuthorizationInteractor mInteractor;
     @Inject

@@ -7,7 +7,7 @@ import dagger.Binds;
 import dagger.Module;
 
 @Module
-public interface UserDataApiModule {
+public interface NetworkModule {
     @Binds
     IUserDataApi bindUserDataApi(MockedUserDataApi userDataApi);
 }

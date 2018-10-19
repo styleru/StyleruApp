@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
 
@@ -22,7 +21,6 @@ public class StyleruNavigator extends SupportAppNavigator {
         Intent intent = null;
         switch (screenKey){
             case ScreenKeys.CATEGORY_ACTIVITY:
-                Log.d("stlnav", "category_activity");
                 intent =  new Intent(context, ChangeCategoryActivity.class);
         }
         return intent;
