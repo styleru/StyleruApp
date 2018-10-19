@@ -1,22 +1,28 @@
 package com.styleru.styleruapp.presentation.login_screen;
 
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.styleru.styleruapp.domain.interactor.AuthorizationInteractor;
+import com.styleru.styleruapp.navigation.ScreenKeys;
+import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import javax.inject.Inject;
 
 @InjectViewState
 public final class LoginPresenter extends MvpPresenter<LoginView> {
-    private final String FAKE_TOKEN = "dmef2342dmk3mda";
-
+    private final StyleruRouter mRouter;
+    public AuthorizationInteractor mInteractor;
     @Inject
-    LoginPresenter() {
+    LoginPresenter(StyleruRouter router, AuthorizationInteractor interactor) {
+        this.mRouter = router;
+        this.mInteractor = interactor;
     }
 
     void signIn(String login, String password){
-        boolean isSuccessful = login.equals("guest") && password.equals("1234"); // fake check
+        boolean isSuccessful = mInteractor.isInfoCorrect(login, password); // fake check
         if (isSuccessful){
-            // cicerone here
+            mRouter.navigateTo(ScreenKeys.CATEGORY_ACTIVITY);
         }
     }
 }

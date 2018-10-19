@@ -7,7 +7,6 @@ import com.styleru.styleruapp.di.DaggerAppComponent;
 
 public class StyleruApplication extends Application {
     private static AppComponent appComponent;
-
     public static AppComponent getAppComponent() {
         return appComponent;
     }

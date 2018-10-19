@@ -2,17 +2,15 @@ package com.styleru.styleruapp.presentation.login_screen;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.styleru.styleruapp.StyleruApplication;
-//import com.styleru.styleruapp.Old.Items.CategoryPagerActivity;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.StyleruApplication;
+import com.styleru.styleruapp.presentation.BaseActivity;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -20,7 +18,7 @@ import javax.inject.Provider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public final class LoginActivity extends MvpAppCompatActivity implements LoginView {
+public final class LoginActivity extends BaseActivity implements LoginView {
 
     @BindView(R.id.login_edit_text) EditText mLoginEditText;
 
