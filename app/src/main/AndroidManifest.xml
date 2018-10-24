@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.category_screen.ChangeCategoryActivity" />
+        <activity android:name=".presentation.main_screen.MainActivity"></activity>
     </application>
 
 </manifest>

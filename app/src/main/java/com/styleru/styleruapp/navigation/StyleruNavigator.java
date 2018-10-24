@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
+import com.styleru.styleruapp.presentation.main_screen.MainActivity;
+import com.styleru.styleruapp.presentation.main_screen.directions_screen.DirectionsFragment;
+import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
+import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
 
 import ru.terrakok.cicerone.android.SupportAppNavigator;
 
-public class StyleruNavigator extends SupportAppNavigator {
+public class StyleruNavigator extends SupportAppNavigator{
 
     public StyleruNavigator(FragmentActivity activity, int containerId) {
         super(activity, containerId);
@@ -20,14 +23,23 @@ public class StyleruNavigator extends SupportAppNavigator {
     public Intent createActivityIntent(Context context, String screenKey, Object data) {
         Intent intent = null;
         switch (screenKey){
-            case ScreenKeys.CATEGORY_ACTIVITY:
-                intent =  new Intent(context, ChangeCategoryActivity.class);
+            case ScreenKeys.MAIN_ACTIVITY:
+                intent =  new Intent(context, MainActivity.class);
+                break;
         }
         return intent;
     }
 
     @Override
     protected Fragment createFragment(String screenKey, Object data) {
+        switch (screenKey){
+            case ScreenKeys.DIRECTIONS_FRAGMENT:
+                return new DirectionsFragment();
+            case ScreenKeys.EVENTS_FRAGMENT:
+                return new EventsFragment();
+            case ScreenKeys.PEOPLE_FRAGMENT:
+                return new PeopleFragment();
+        }
         return null;
     }
 }

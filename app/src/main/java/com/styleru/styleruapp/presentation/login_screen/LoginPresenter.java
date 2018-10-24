@@ -22,7 +22,7 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
     void signIn(String login, String password){
         boolean isSuccessful = mInteractor.isInfoCorrect(login, password); // fake check
         if (isSuccessful){
-            mRouter.navigateTo(ScreenKeys.CATEGORY_ACTIVITY);
+            mRouter.navigateTo(ScreenKeys.MAIN_ACTIVITY);
         }
     }
 }
