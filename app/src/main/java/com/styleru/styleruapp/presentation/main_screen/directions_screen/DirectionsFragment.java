@@ -43,8 +43,9 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_directions, container, false);
+        View view = inflater.inflate(R.layout.fragment_directions, container, false);
         mUnbinder = ButterKnife.bind(this, view);
+        mBottomNavigationView.setSelectedItemId(R.id.directions_menu);
         for (String element:
                 CATEGORIES) {
             View item = inflater.inflate(R.layout.item_category, mLinearLayout, false);

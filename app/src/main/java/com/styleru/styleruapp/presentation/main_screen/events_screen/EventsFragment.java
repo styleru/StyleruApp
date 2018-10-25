@@ -46,6 +46,7 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container,false);
         mUnbinder = ButterKnife.bind(this,view);
+        mBottomNavigationView.setSelectedItemId(R.id.events_menu);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;

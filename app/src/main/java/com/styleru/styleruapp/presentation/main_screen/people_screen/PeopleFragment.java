@@ -47,6 +47,7 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
         mUnbinder = ButterKnife.bind(this, view);
+        mBottomNavigationView.setSelectedItemId(R.id.people_menu);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;
