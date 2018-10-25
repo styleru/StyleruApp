@@ -22,13 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
-    @InjectPresenter
-    PeoplePresenter mPresenter;
-    @Inject
-    Provider<PeoplePresenter> mProvider;
+    @InjectPresenter PeoplePresenter mPresenter;
+    @Inject Provider<PeoplePresenter> mProvider;
     @ProvidePresenter PeoplePresenter getPresenter(){return mProvider.get();}
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

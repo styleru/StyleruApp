@@ -61,7 +61,7 @@ public class CategoryPagerActivity extends AppCompatActivity {
                     case 1:
                         return PeopleFragment.newInstance();
                     case 2:
-                        return EventsFragment.newInstance();
+                        return EventsFragmentOld.newInstance();
                     case 3:
                         return ProfileFragment.newInstance();
 

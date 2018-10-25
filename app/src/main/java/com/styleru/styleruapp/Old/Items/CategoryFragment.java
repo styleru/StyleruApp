@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class CategoryFragment extends Fragment {
+
     private Unbinder mUnbinder;
     @BindView(R.id.category_layout) LinearLayout mLinearLayout;
 

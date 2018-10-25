@@ -24,23 +24,20 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DirectionsFragment extends MvpAppCompatFragment implements DirectionsView {
+    @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.category_layout) LinearLayout mLinearLayout;
+    @InjectPresenter DirectionsPresenter mPresenter;
+    @Inject Provider<DirectionsPresenter> mProvidePresenter;
+    @ProvidePresenter DirectionsPresenter provideDirectionPresenter(){return mProvidePresenter.get();}
+
+    private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         StyleruApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
     }
 
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView mBottomNavigationView;
-    @BindView(R.id.category_layout)
-    LinearLayout mLinearLayout;
-    @InjectPresenter
-    DirectionsPresenter mPresenter;
-    @Inject
-    Provider<DirectionsPresenter> mProvidePresenter;
-    @ProvidePresenter
-    DirectionsPresenter provideDirectionPresenter(){return mProvidePresenter.get();}
-    private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

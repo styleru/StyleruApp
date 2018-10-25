@@ -28,6 +28,7 @@ public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
                 mRouter.navigateTo(ScreenKeys.EVENTS_FRAGMENT);
                 break;
             case R.id.profile_menu:
+                mRouter.navigateTo(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
     }

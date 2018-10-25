@@ -104,10 +104,6 @@ public class ProfileFragment extends Fragment {
                     linkTextViewID = R.id.textView3;
                     linkEditTextID = R.id.editText3;
                     break;
-                case 4:
-                    linkTextViewID = R.id.textView4;
-                    linkEditTextID = R.id.editText4;
-                    break;
                 default:
                     //just dog-nail to avoid red line
                     linkTextViewID = R.id.first_name_text_view;

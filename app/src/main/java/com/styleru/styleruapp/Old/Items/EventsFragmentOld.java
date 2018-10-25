@@ -19,13 +19,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class EventsFragment extends Fragment{
+public class EventsFragmentOld extends Fragment{
     private Unbinder mUnbinder;
     @BindView(R.id.single_recycler_view)
     RecyclerView mRecyclerView;
 
     public static Fragment newInstance(){
-        EventsFragment fragment = new EventsFragment();
+        EventsFragmentOld fragment = new EventsFragmentOld();
         return fragment;
     }
 

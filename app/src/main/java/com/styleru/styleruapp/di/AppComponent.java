@@ -10,6 +10,7 @@ import com.styleru.styleruapp.presentation.main_screen.MainActivity;
 import com.styleru.styleruapp.presentation.main_screen.directions_screen.DirectionsFragment;
 import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
 import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFragment;
 
 import javax.inject.Singleton;
 
@@ -24,6 +25,7 @@ public interface AppComponent {
     void inject(DirectionsFragment directionsFragment);
     void inject(EventsFragment eventsFragment);
     void inject(PeopleFragment peopleFragment);
+    void inject(ProfileFragment profileFragment);
 
     @Component.Builder
     interface Builder {

@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.presentation.main_screen.events_screen;
+package com.styleru.styleruapp.presentation.main_screen.profile_screen;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,24 +21,24 @@ import javax.inject.Provider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EventsFragment extends MvpAppCompatFragment implements EventsView {
+public class ProfileFragment extends MvpAppCompatFragment implements ProfileView {
+    @InjectPresenter ProfilePresenter mPresenter;
+    @Inject Provider<ProfilePresenter> mProvider;
+    @ProvidePresenter ProfilePresenter getPresenter() {return mProvider.get();}
+
+    @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         StyleruApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
     }
 
-    @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
-
-    @InjectPresenter EventsPresenter mPresenter;
-    @Inject Provider<EventsPresenter> mProvidePresenter;
-    @ProvidePresenter EventsPresenter providePresenter(){return mProvidePresenter.get();}
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_events, container,false);
-        ButterKnife.bind(this,view);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        ButterKnife.bind(this, view);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;
