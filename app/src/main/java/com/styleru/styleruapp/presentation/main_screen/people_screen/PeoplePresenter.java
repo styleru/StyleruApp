@@ -10,7 +10,7 @@ import com.styleru.styleruapp.navigation.StyleruRouter;
 import javax.inject.Inject;
 
 class PeoplePresenter extends MvpPresenter<PeopleView> {
-    StyleruRouter mRouter;
+    private StyleruRouter mRouter;
 
     @Inject
     PeoplePresenter(StyleruRouter router){
@@ -20,14 +20,13 @@ class PeoplePresenter extends MvpPresenter<PeopleView> {
     void changeScreen(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.directions_menu:
-                mRouter.navigateTo(ScreenKeys.DIRECTIONS_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
                 break;
             case R.id.events_menu:
-                mRouter.navigateTo(ScreenKeys.EVENTS_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
                 break;
             case R.id.profile_menu:
-
-                mRouter.navigateTo(ScreenKeys.PROFILE_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
     }

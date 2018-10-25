@@ -22,6 +22,7 @@ import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class DirectionsFragment extends MvpAppCompatFragment implements DirectionsView {
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
@@ -29,6 +30,7 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @InjectPresenter DirectionsPresenter mPresenter;
     @Inject Provider<DirectionsPresenter> mProvidePresenter;
     @ProvidePresenter DirectionsPresenter provideDirectionPresenter(){return mProvidePresenter.get();}
+    Unbinder mUnbinder;
 
     private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
 
@@ -42,7 +44,7 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_directions, container, false);
-        ButterKnife.bind(this, view);
+        mUnbinder = ButterKnife.bind(this, view);
         for (String element:
                 CATEGORIES) {
             View item = inflater.inflate(R.layout.item_category, mLinearLayout, false);
@@ -57,5 +59,11 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
             return true;}
         );
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mUnbinder.unbind();
     }
 }

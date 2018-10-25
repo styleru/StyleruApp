@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.Old.Items;
+package com.styleru.styleruapp.presentation.main_screen.people_screen;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
     private LayoutInflater mLayoutInflater;
     private List<ProfileItem> mProfileItemList;
 
-    public PeopleDataAdapter(LayoutInflater layoutInflater, List<ProfileItem> profileItemList) {
+    PeopleDataAdapter(LayoutInflater layoutInflater, List<ProfileItem> profileItemList) {
         mLayoutInflater = layoutInflater;
         mProfileItemList = profileItemList;
     }
@@ -43,7 +44,7 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
         return mProfileItemList.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
     final ImageView mPersonImageView;
     final TextView mDirectionsTextView;
     final TextView mNameTextView;

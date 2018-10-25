@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 @InjectViewState
 public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
-    StyleruRouter mRouter;
+    private StyleruRouter mRouter;
     @Inject
     DirectionsPresenter(StyleruRouter router){
         this.mRouter = router;
@@ -22,13 +22,13 @@ public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
     void changeScreen(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.people_menu:
-                mRouter.navigateTo(ScreenKeys.PEOPLE_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
                 break;
             case R.id.events_menu:
-                mRouter.navigateTo(ScreenKeys.EVENTS_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
                 break;
             case R.id.profile_menu:
-                mRouter.navigateTo(ScreenKeys.PROFILE_FRAGMENT);
+                mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
     }

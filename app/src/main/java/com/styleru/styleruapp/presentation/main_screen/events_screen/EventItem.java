@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.Old.Items;
+package com.styleru.styleruapp.presentation.main_screen.events_screen;
 
 public class EventItem {
     private String mImage;
@@ -6,7 +6,7 @@ public class EventItem {
     private String mDate;
     private String mPlace;
 
-    public EventItem(String image, String title, String date, String place) {
+    EventItem(String image, String title, String date, String place) {
         mImage = image;
         mTitle = title;
         mDate = date;
@@ -37,7 +37,7 @@ public class EventItem {
         mDate = date;
     }
 
-    public String getPlace() {
+    String getPlace() {
         return mPlace;
     }
 

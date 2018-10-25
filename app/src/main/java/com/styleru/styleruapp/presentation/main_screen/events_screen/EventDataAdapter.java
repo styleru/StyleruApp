@@ -1,4 +1,4 @@
-package com.styleru.styleruapp.Old.Items;
+package com.styleru.styleruapp.presentation.main_screen.events_screen;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +17,7 @@ public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.View
     private LayoutInflater mLayoutInflater;
     private List<EventItem> mEventsItemList;
 
-    public EventDataAdapter(LayoutInflater layoutInflater, List<EventItem> eventsItemList) {
+    EventDataAdapter(LayoutInflater layoutInflater, List<EventItem> eventsItemList) {
         mLayoutInflater = layoutInflater;
         mEventsItemList = eventsItemList;
     }
@@ -43,7 +43,7 @@ public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.View
         return mEventsItemList.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView mEventImageView;
         final TextView mInfoTextView;
         final TextView mTitleTextView;
