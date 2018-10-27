@@ -12,7 +12,7 @@ import javax.inject.Inject;
 @InjectViewState
 public final class LoginPresenter extends MvpPresenter<LoginView> {
     private final StyleruRouter mRouter;
-    public AuthorizationInteractor mInteractor;
+    private AuthorizationInteractor mInteractor;
     @Inject
     LoginPresenter(StyleruRouter router, AuthorizationInteractor interactor) {
         this.mRouter = router;
