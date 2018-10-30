@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 @InjectViewState
 public class MainActivityPresenter extends MvpPresenter<MvpView> {
-    private StyleruRouter mRouter;
+    private final StyleruRouter mRouter;
     @Inject
     MainActivityPresenter(StyleruRouter router){this.mRouter = router;}
 
