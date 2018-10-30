@@ -7,7 +7,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.presentation.BaseActivity;
 
 import javax.inject.Inject;
@@ -29,6 +28,6 @@ public class MainActivity extends BaseActivity implements MvpView {
         StyleruApplication.getAppComponent().inject(this);
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
-        mPresenter.changeScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
+        mPresenter.changeScreen();
     }
 }
