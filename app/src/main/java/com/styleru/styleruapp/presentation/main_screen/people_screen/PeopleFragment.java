@@ -18,7 +18,6 @@ import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
 import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,26 +46,31 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
         mUnbinder = ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mBottomNavigationView.setSelectedItemId(R.id.people_menu);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;
         });
-        //mUnbinder = ButterKnife.bind(this, view);
-        ProfileItem sampleProfile = new ProfileItem("dolphin", "web", "https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg");
-        List<ProfileItem> mProfiles = new ArrayList<>();
-        for (int i = 0; i < 100; i++){
-            mProfiles.add(sampleProfile);
-        }
-        PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, mProfiles);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(adapter);
-        return view;
+        mPresenter.provideData();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void showData(List<ProfileItem> items) {
+        LayoutInflater inflater = getLayoutInflater();
+        PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, items);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(adapter);
     }
 }

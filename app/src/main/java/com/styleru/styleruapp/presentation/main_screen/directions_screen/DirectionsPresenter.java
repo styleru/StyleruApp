@@ -13,9 +13,10 @@ import javax.inject.Inject;
 
 @InjectViewState
 public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
-    private StyleruRouter mRouter;
+    private final StyleruRouter mRouter;
+
     @Inject
-    DirectionsPresenter(StyleruRouter router){
+    DirectionsPresenter(StyleruRouter router) {
         this.mRouter = router;
     }
 
@@ -32,5 +33,4 @@ public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
                 break;
         }
     }
-
 }

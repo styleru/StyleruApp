@@ -44,8 +44,8 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_directions, container, false);
+
         mUnbinder = ButterKnife.bind(this, view);
-        mBottomNavigationView.setSelectedItemId(R.id.directions_menu);
         for (String element:
                 CATEGORIES) {
             View item = inflater.inflate(R.layout.item_category, mLinearLayout, false);
@@ -53,13 +53,19 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
             directionName.setText(element);
             mLinearLayout.addView(item);
         }
+        return view;
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mBottomNavigationView.setSelectedItemId(R.id.directions_menu);
 
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)->{
             mPresenter.changeScreen(menuItem);
             return true;}
         );
-        return view;
+
     }
 
     @Override

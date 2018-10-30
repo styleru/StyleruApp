@@ -31,7 +31,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class ProfileFragment extends MvpAppCompatFragment implements ProfileView {
-    Unbinder mUnbinder;
+    private Unbinder mUnbinder;
+    private View mView;
     @InjectPresenter ProfilePresenter mPresenter;
     @Inject Provider<ProfilePresenter> mProvider;
     @ProvidePresenter ProfilePresenter getPresenter() {return mProvider.get();}
@@ -55,44 +56,24 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        mView = inflater.inflate(R.layout.fragment_profile, container, false);
+        mUnbinder = ButterKnife.bind(this, mView);
+
+        return mView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mBottomNavigationView.setSelectedItemId(R.id.profile_menu);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;
         });
-        setData(view);
-        return view;
+        mPresenter.provideData();
     }
 
-    private void setData(View view){
-        HashMap<String, String> links = new HashMap<>();
-        links.put("VK", "id4920");
-        links.put("Instagram", "ngneecwmk.com");
-        links.put("лицокнига", "navalnyi2018.com");
-
-        ProfileItem sampleProfile = new ProfileItem("Vlad","Yundin",
-                "Android",
-                "null@gmail.com",
-                "88005553535",
-                "https://pp.userapi.com/c836234/v836234471/2fc01/CfB0TIHo8zE.jpg?ava=1",
-                links);
-
-        mFirstNameTextView.setText(sampleProfile.getFirstName());
-        mSecondNameTextView.setText(sampleProfile.getSecondName());
-        mDirectionsTextView.setText(sampleProfile.getDirections());
-        mEmailEditText.setText(sampleProfile.getEmail());
-        mPhoneEditText.setText(sampleProfile.getPhoneNumber());
-        Glide.with(view)
-                .load(sampleProfile.getPhoto())
-                .into(mProfileImageView);
-
-
-        setLinks(links, view);
-    }
-
-    private void setLinks(HashMap<String, String> links, View view){
+    private void setLinks(HashMap<String, String> links){
         String keys[] = new String[links.size()];
         keys = links.keySet().toArray(keys);
         for (int i = 0; i < links.size(); i++) {
@@ -117,8 +98,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
                     linkEditTextID = R.id.email_edit_text;
                     break;
             }
-            TextView linkNameTextView = view.findViewById(linkTextViewID);
-            EditText linkURLEditText = view.findViewById(linkEditTextID);
+            TextView linkNameTextView = mView.findViewById(linkTextViewID);
+            EditText linkURLEditText = mView.findViewById(linkEditTextID);
             linkNameTextView.setText(keys[i]);
             linkNameTextView.setVisibility(View.VISIBLE);
             linkURLEditText.setText(links.get(keys[i]));
@@ -130,5 +111,18 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     public void onDestroyView() {
         super.onDestroyView();
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void showData(ProfileItem profileItem, HashMap<String, String> links) {
+        mFirstNameTextView.setText(profileItem.getFirstName());
+        mSecondNameTextView.setText(profileItem.getSecondName());
+        mDirectionsTextView.setText(profileItem.getDirections());
+        mEmailEditText.setText(profileItem.getEmail());
+        mPhoneEditText.setText(profileItem.getPhoneNumber());
+        Glide.with(mView)
+                .load(profileItem.getPhoto())
+                .into(mProfileImageView);
+        setLinks(links);
     }
 }

@@ -2,15 +2,21 @@ package com.styleru.styleruapp.presentation.main_screen.people_screen;
 
 import android.view.MenuItem;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
+import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
-class PeoplePresenter extends MvpPresenter<PeopleView> {
-    private StyleruRouter mRouter;
+@InjectViewState
+public class PeoplePresenter extends MvpPresenter<PeopleView> {
+    private final StyleruRouter mRouter;
 
     @Inject
     PeoplePresenter(StyleruRouter router){
@@ -29,5 +35,14 @@ class PeoplePresenter extends MvpPresenter<PeopleView> {
                 mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
+    }
+
+    void provideData(){
+        ProfileItem sampleProfile = new ProfileItem("dolphin", "web", "https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg");
+        List<ProfileItem> profiles = new ArrayList<>();
+        for (int i = 0; i < 100; i++){
+            profiles.add(sampleProfile);
+        }
+        getViewState().showData(profiles);
     }
 }

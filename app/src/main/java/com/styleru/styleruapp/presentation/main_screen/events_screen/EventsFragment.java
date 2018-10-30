@@ -17,7 +17,6 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,20 +45,18 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container,false);
         mUnbinder = ButterKnife.bind(this,view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mBottomNavigationView.setSelectedItemId(R.id.events_menu);
         mBottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem menuItem)-> {
             mPresenter.changeScreen(menuItem);
             return true;
         });
-        EventItem sampleProfile = new EventItem("https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Bufotes_oblongus.jpg/275px-Bufotes_oblongus.jpg", "java meetup", "31.12.2018", "red square");
-        List<EventItem> mProfiles = new ArrayList<>();
-        for (int i = 0; i < 100; i++){
-            mProfiles.add(sampleProfile);
-        }
-        EventDataAdapter adapter = new EventDataAdapter(inflater, mProfiles);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(adapter);
-        return view;
+        mPresenter.provideData();
     }
 
     @Override
@@ -67,4 +64,12 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView {
         super.onDestroyView();
         mUnbinder.unbind();
     }
+
+    public void showData(List<EventItem> items){
+        LayoutInflater inflater = getLayoutInflater();
+        EventDataAdapter adapter = new EventDataAdapter(inflater, items);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(adapter);
+    }
+
 }

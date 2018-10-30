@@ -14,12 +14,7 @@ public class MainActivityPresenter extends MvpPresenter<MvpView> {
     @Inject
     MainActivityPresenter(StyleruRouter router){this.mRouter = router;}
 
-    void changeScreen(String key){
-        switch (key) {
-            case ScreenKeys.DIRECTIONS_FRAGMENT:
-                mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
-                break;
-        }
-
+    void changeScreen(){
+        mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
     }
 }
