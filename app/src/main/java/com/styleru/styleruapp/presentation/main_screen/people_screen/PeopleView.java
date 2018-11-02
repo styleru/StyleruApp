@@ -1,7 +1,7 @@
 package com.styleru.styleruapp.presentation.main_screen.people_screen;
 
 import com.arellomobile.mvp.MvpView;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.List;
 

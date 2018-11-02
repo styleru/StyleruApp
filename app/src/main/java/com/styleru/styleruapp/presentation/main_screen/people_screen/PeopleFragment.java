@@ -16,7 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.List;
 

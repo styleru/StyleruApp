@@ -4,18 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -26,7 +28,7 @@ import butterknife.Unbinder;
 
 public class DirectionsFragment extends MvpAppCompatFragment implements DirectionsView {
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
-    @BindView(R.id.category_layout) LinearLayout mLinearLayout;
+    @BindView(R.id.directions_recycler_view) RecyclerView mRecyclerView;
     @InjectPresenter DirectionsPresenter mPresenter;
     @Inject Provider<DirectionsPresenter> mProvidePresenter;
     @ProvidePresenter DirectionsPresenter provideDirectionPresenter(){return mProvidePresenter.get();}
@@ -34,25 +36,24 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
 
     private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        StyleruApplication.getAppComponent().inject(this);
-        super.onCreate(savedInstanceState);
-    }
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            StyleruApplication.getAppComponent().inject(this);
+            super.onCreate(savedInstanceState);
+        }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_directions, container, false);
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.fragment_directions, container, false);
 
-        mUnbinder = ButterKnife.bind(this, view);
+            mUnbinder = ButterKnife.bind(this, view);
+            /*List<DirectionsItem> items = new ArrayList<>();
         for (String element:
                 CATEGORIES) {
-            View item = inflater.inflate(R.layout.item_category, mLinearLayout, false);
-            TextView directionName = item.findViewById(R.id.category_name);
-            directionName.setText(element);
-            mLinearLayout.addView(item);
-        }
+            DirectionsItem item = new DirectionsItem(element);
+            items.add(item);
+        }*/
         return view;
     }
 
@@ -65,6 +66,7 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
             mPresenter.changeScreen(menuItem);
             return true;}
         );
+        mPresenter.provideData();
 
     }
 
@@ -72,5 +74,12 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     public void onDestroyView() {
         super.onDestroyView();
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void showData(List<DirectionsItem> items) {
+            LayoutInflater inflater = getLayoutInflater();
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            mRecyclerView.setAdapter(new DirectionsDataAdapter(inflater, items));
     }
 }

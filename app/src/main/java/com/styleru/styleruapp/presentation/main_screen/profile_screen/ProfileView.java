@@ -1,10 +1,9 @@
 package com.styleru.styleruapp.presentation.main_screen.profile_screen;
 
 import com.arellomobile.mvp.MvpView;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
 
-import java.util.HashMap;
+import java.util.List;
 
 interface ProfileView extends MvpView {
-    void showData(ProfileItem profileItem, HashMap<String, String> links);
+    void showData(ProfileItem profileItem, List<LinkItem> links);
 }

@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +21,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
 
-import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -33,12 +34,13 @@ import butterknife.Unbinder;
 public class ProfileFragment extends MvpAppCompatFragment implements ProfileView {
     private Unbinder mUnbinder;
     private View mView;
+    private LayoutInflater mInflater;
     @InjectPresenter ProfilePresenter mPresenter;
     @Inject Provider<ProfilePresenter> mProvider;
     @ProvidePresenter ProfilePresenter getPresenter() {return mProvider.get();}
 
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
-
+    @BindView(R.id.profile_links_recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.profile_image_view) ImageView mProfileImageView;
     @BindView(R.id.first_name_text_view) TextView mFirstNameTextView;
     @BindView(R.id.second_name_text_view) TextView mSecondNameTextView;
@@ -70,41 +72,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
             mPresenter.changeScreen(menuItem);
             return true;
         });
+        mInflater = getLayoutInflater();
         mPresenter.provideData();
-    }
-
-    private void setLinks(HashMap<String, String> links){
-        String keys[] = new String[links.size()];
-        keys = links.keySet().toArray(keys);
-        for (int i = 0; i < links.size(); i++) {
-            int linkTextViewID;
-            int linkEditTextID;
-            switch (i) {
-                case 0:
-                    linkTextViewID = R.id.textView0;
-                    linkEditTextID = R.id.editText0;
-                    break;
-                case 1:
-                    linkTextViewID = R.id.textView1;
-                    linkEditTextID = R.id.editText1;
-                    break;
-                case 2:
-                    linkTextViewID = R.id.textView2;
-                    linkEditTextID = R.id.editText2;
-                    break;
-                default:
-                    //just dog-nail to avoid red line
-                    linkTextViewID = R.id.first_name_text_view;
-                    linkEditTextID = R.id.email_edit_text;
-                    break;
-            }
-            TextView linkNameTextView = mView.findViewById(linkTextViewID);
-            EditText linkURLEditText = mView.findViewById(linkEditTextID);
-            linkNameTextView.setText(keys[i]);
-            linkNameTextView.setVisibility(View.VISIBLE);
-            linkURLEditText.setText(links.get(keys[i]));
-            linkURLEditText.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -114,7 +83,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     }
 
     @Override
-    public void showData(ProfileItem profileItem, HashMap<String, String> links) {
+    public void showData(ProfileItem profileItem, List<LinkItem> links) {
         mFirstNameTextView.setText(profileItem.getFirstName());
         mSecondNameTextView.setText(profileItem.getSecondName());
         mDirectionsTextView.setText(profileItem.getDirections());
@@ -123,6 +92,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         Glide.with(mView)
                 .load(profileItem.getPhoto())
                 .into(mProfileImageView);
-        setLinks(links);
+        mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 }

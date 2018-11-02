@@ -7,9 +7,9 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,10 +34,10 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
     }
 
     void provideData(){
-        HashMap<String, String> links = new HashMap<>();
-        links.put("VK", "id4920");
-        links.put("Instagram", "ngneecwmk.com");
-        links.put("лицокнига", "navalnyi2018.com");
+        List<LinkItem> links = new ArrayList<>();
+        links.add(new LinkItem("VK", "id4920"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
 
         ProfileItem sampleProfile = new ProfileItem("Vlad","Yundin",
                 "Android",

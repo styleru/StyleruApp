@@ -62,12 +62,10 @@
         android:id="@+id/phone_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="none"
-        app:layout_constraintBottom_toTopOf="@+id/textView0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/phone_text_view"
         app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
@@ -103,85 +101,15 @@
         app:layout_constraintStart_toEndOf="@+id/profile_image_view"
         app:layout_constraintTop_toBottomOf="@+id/second_name_text_view" />
 
-    <TextView
-        android:id="@+id/textView0"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/profile_links_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_text_view" />
-
-    <EditText
-        android:id="@+id/editText0"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView0"
-        app:layout_constraintTop_toBottomOf="@+id/phone_edit_text" />
-
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView0" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_edit_text">
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/editText0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+    </android.support.v7.widget.RecyclerView>
 
 
     <android.support.design.widget.BottomNavigationView xmlns:android="http://schemas.android.com/apk/res/android"

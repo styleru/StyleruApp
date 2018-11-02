@@ -7,7 +7,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.ArrayList;
 import java.util.Collections;

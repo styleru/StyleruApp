@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.presentation.main_screen.ProfileItem;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.List;
 

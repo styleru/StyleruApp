@@ -11,19 +11,12 @@
         android:title="@string/directions"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"/>
-    <ScrollView
-        android:id="@+id/category_scroll_view"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/directions_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="8dp">
-        <LinearLayout
-            android:id="@+id/category_layout"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-    </ScrollView>
+    </android.support.v7.widget.RecyclerView>
     <include layout="@layout/bottom_navigation_layout"/>
 </LinearLayout>

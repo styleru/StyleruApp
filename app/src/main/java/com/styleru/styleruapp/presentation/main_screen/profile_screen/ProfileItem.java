@@ -1,6 +1,6 @@
-package com.styleru.styleruapp.presentation.main_screen;
+package com.styleru.styleruapp.presentation.main_screen.profile_screen;
 
-import java.util.HashMap;
+import java.util.List;
 
 public class ProfileItem {
     private String mFirstName;
@@ -9,9 +9,9 @@ public class ProfileItem {
     private String mEmail;
     private String mPhoneNumber;
     private String mPhoto;
-    private HashMap<String, String > mLinks;
+    private List<LinkItem> mLinks;
 
-    public ProfileItem(String firstName, String secondName, String directions, String email, String phoneNumber, String photo, HashMap<String, String> links) {
+    public ProfileItem(String firstName, String secondName, String directions, String email, String phoneNumber, String photo, List<LinkItem> links) {
         mFirstName = firstName;
         mSecondName = secondName;
         mDirections = directions;
@@ -35,7 +35,7 @@ public class ProfileItem {
         mFirstName = firstName;
     }
 
-    public String getSecondName() {
+    String getSecondName() {
         return mSecondName;
     }
 
@@ -51,7 +51,7 @@ public class ProfileItem {
         mDirections = directions;
     }
 
-    public String getEmail() {
+    String getEmail() {
         return mEmail;
     }
 
@@ -59,7 +59,7 @@ public class ProfileItem {
         mEmail = email;
     }
 
-    public String getPhoneNumber() {
+    String getPhoneNumber() {
         return mPhoneNumber;
     }
 
@@ -67,7 +67,7 @@ public class ProfileItem {
         mPhoneNumber = phoneNumber;
     }
 
-    public String getPhoto() {
+    String getPhoto() {
         return mPhoto;
     }
 
@@ -75,11 +75,11 @@ public class ProfileItem {
         mPhoto = photo;
     }
 
-    public HashMap<String, String> getLinks() {
+    public List<LinkItem> getLinks() {
         return mLinks;
     }
 
-    public void setLinks(HashMap<String, String> links) {
+    public void setLinks(List<LinkItem> links) {
         mLinks = links;
     }
 }
