@@ -16,6 +16,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
+import com.styleru.styleruapp.navigation.ScreenKeys;
+import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
 
@@ -70,6 +72,23 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView {
         EventDataAdapter adapter = new EventDataAdapter(inflater, items);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onPeopleClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
+    }
+
+    @Override
+    public void onProfileClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
+
+    }
+
+    @Override
+    public void onDirectionsClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
+
     }
 
 }

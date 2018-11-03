@@ -16,6 +16,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
+import com.styleru.styleruapp.navigation.ScreenKeys;
+import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
 
@@ -34,8 +36,6 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @ProvidePresenter DirectionsPresenter provideDirectionPresenter(){return mProvidePresenter.get();}
     Unbinder mUnbinder;
 
-    private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             StyleruApplication.getAppComponent().inject(this);
@@ -48,12 +48,6 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
             View view = inflater.inflate(R.layout.fragment_directions, container, false);
 
             mUnbinder = ButterKnife.bind(this, view);
-            /*List<DirectionsItem> items = new ArrayList<>();
-        for (String element:
-                CATEGORIES) {
-            DirectionsItem item = new DirectionsItem(element);
-            items.add(item);
-        }*/
         return view;
     }
 
@@ -81,5 +75,20 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
             LayoutInflater inflater = getLayoutInflater();
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             mRecyclerView.setAdapter(new DirectionsDataAdapter(inflater, items));
+    }
+
+    @Override
+    public void onPeopleClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
+    }
+
+    @Override
+    public void onEventsClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
+    }
+
+    @Override
+    public void onProfileClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
     }
 }

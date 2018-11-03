@@ -21,6 +21,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
+import com.styleru.styleruapp.navigation.ScreenKeys;
+import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
 
@@ -95,5 +97,20 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+    }
+
+    @Override
+    public void onPeopleClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
+    }
+
+    @Override
+    public void onEventsClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
+    }
+
+    @Override
+    public void onDirectionsClicked(StyleruRouter router) {
+        router.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
     }
 }
