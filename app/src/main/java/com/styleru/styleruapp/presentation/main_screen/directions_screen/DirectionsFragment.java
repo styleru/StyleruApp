@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -73,7 +72,6 @@ public class DirectionsFragment extends MvpAppCompatFragment implements Directio
     @Override
     public void showData(List<DirectionsItem> items) {
             LayoutInflater inflater = getLayoutInflater();
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             mRecyclerView.setAdapter(new DirectionsDataAdapter(inflater, items));
     }
 

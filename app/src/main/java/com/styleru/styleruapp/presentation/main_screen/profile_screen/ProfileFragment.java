@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -85,7 +84,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     }
 
     @Override
-    public void showData(ProfileItem profileItem, List<LinkItem> links) {
+    public void showData(ProfileModel profileItem) {
+        List<LinkItem> links = profileItem.getLinks();
         mFirstNameTextView.setText(profileItem.getFirstName());
         mSecondNameTextView.setText(profileItem.getSecondName());
         mDirectionsTextView.setText(profileItem.getDirections());
@@ -95,7 +95,6 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
                 .load(profileItem.getPhoto())
                 .into(mProfileImageView);
         mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }
 

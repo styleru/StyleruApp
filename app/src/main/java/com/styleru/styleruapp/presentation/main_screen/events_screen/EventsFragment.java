@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -70,7 +69,6 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView {
     public void showData(List<EventItem> items){
         LayoutInflater inflater = getLayoutInflater();
         EventDataAdapter adapter = new EventDataAdapter(inflater, items);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapter);
     }
 

@@ -38,12 +38,13 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
         links.add(new LinkItem("Instagram", "ngneecwmk.com"));
         links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
 
-        ProfileItem sampleProfile = new ProfileItem("Vlad","Yundin",
+        ProfileModel sampleProfile = new ProfileModel("Vlad","Yundin",
                 "Android",
+                "https://pp.userapi.com/c836234/v836234471/2fc01/CfB0TIHo8zE.jpg?ava=1",
+                "ci1p24qh93rrk92k91",
                 "null@gmail.com",
                 "88005553535",
-                "https://pp.userapi.com/c836234/v836234471/2fc01/CfB0TIHo8zE.jpg?ava=1",
                 links);
-        getViewState().showData(sampleProfile, links);
+        getViewState().showData(sampleProfile);
     }
 }

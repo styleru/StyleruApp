@@ -10,17 +10,18 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
-import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.List;
 
-public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.ViewHolder> {
+public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.ViewHolder>{
     private LayoutInflater mLayoutInflater;
-    private List<ProfileItem> mProfileItemList;
+    private List<PeopleRecyclerModel> mProfileItemList;
+    private View.OnClickListener mOnClickListener;
 
-    PeopleDataAdapter(LayoutInflater layoutInflater, List<ProfileItem> profileItemList) {
+    PeopleDataAdapter(LayoutInflater layoutInflater, List<PeopleRecyclerModel> profileItemList, View.OnClickListener onClickListener) {
         mLayoutInflater = layoutInflater;
         mProfileItemList = profileItemList;
+        mOnClickListener = onClickListener;
     }
 
     @NonNull
@@ -31,20 +32,23 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ProfileItem item = mProfileItemList.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i){
+        PeopleRecyclerModel item = mProfileItemList.get(i);
         viewHolder.mDirectionsTextView.setText(item.getDirections());
         viewHolder.mNameTextView.setText(item.getFirstName());
         Glide.with(viewHolder.mPersonImageView.getContext())
-                .load("https://pp.userapi.com/c847123/v847123031/156d/kxJRy2z3nOA.jpg")
+                .load(item.getPhoto())
                 .into(viewHolder.mPersonImageView);
+        viewHolder.itemView.setOnClickListener(mOnClickListener);
+        viewHolder.itemView.setTag(item.getID());
     }
     @Override
     public int getItemCount() {
         return mProfileItemList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+
+    class ViewHolder extends RecyclerView.ViewHolder{
     final ImageView mPersonImageView;
     final TextView mDirectionsTextView;
     final TextView mNameTextView;

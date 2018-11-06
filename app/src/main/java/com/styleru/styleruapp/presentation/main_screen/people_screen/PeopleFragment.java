@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,7 +17,6 @@ import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
 import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
-import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileItem;
 
 import java.util.List;
 
@@ -33,9 +31,11 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
     Unbinder mUnbinder;
     @InjectPresenter PeoplePresenter mPresenter;
     @Inject Provider<PeoplePresenter> mProvider;
+    @Inject StyleruRouter mRouter;
     @ProvidePresenter PeoplePresenter getPresenter(){return mProvider.get();}
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
     @BindView(R.id.single_recycler_view) RecyclerView mRecyclerView;
+    View.OnClickListener mOnClickListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,15 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
     }
 
     @Override
-    public void showData(List<ProfileItem> items) {
+    public void showData(List<PeopleRecyclerModel> items) {
         LayoutInflater inflater = getLayoutInflater();
-        PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, items);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mOnClickListener = v -> {
+                String id = (String)v.getTag();
+                mPresenter.onProfileClicked(id);
+            };
+        PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, items, mOnClickListener);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setOnClickListener(mOnClickListener);
     }
 
     @Override
@@ -82,7 +86,7 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
     }
 
     @Override
-    public void onProfileClicked(StyleruRouter router) {
+    public void onProfileClicked(StyleruRouter router, Object data) {
         router.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
     }
 
