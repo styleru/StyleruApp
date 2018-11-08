@@ -2,6 +2,7 @@ package com.styleru.styleruapp.navigation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
@@ -14,6 +15,7 @@ import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFra
 import ru.terrakok.cicerone.android.SupportAppNavigator;
 
 public class StyleruNavigator extends SupportAppNavigator{
+    public static final String ID = "id";
 
     public StyleruNavigator(FragmentActivity activity, int containerId) {
         super(activity, containerId);
@@ -41,7 +43,11 @@ public class StyleruNavigator extends SupportAppNavigator{
             case ScreenKeys.PEOPLE_FRAGMENT:
                 return new PeopleFragment();
             case ScreenKeys.PROFILE_FRAGMENT:
-                return new ProfileFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(ID, (String)data);
+                Fragment fragment = new ProfileFragment();
+                fragment.setArguments(bundle);
+                return fragment;
         }
         return null;
     }

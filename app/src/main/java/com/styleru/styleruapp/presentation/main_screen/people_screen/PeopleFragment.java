@@ -15,7 +15,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
@@ -78,21 +77,5 @@ public class PeopleFragment extends MvpAppCompatFragment implements PeopleView {
         PeopleDataAdapter adapter = new PeopleDataAdapter(inflater, items, mOnClickListener);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setOnClickListener(mOnClickListener);
-    }
-
-    @Override
-    public void onEventsClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
-    }
-
-    @Override
-    public void onProfileClicked(StyleruRouter router, Object data) {
-        router.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
-    }
-
-    @Override
-    public void onDirectionsClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
-
     }
 }

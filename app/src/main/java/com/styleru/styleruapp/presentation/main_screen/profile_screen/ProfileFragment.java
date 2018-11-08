@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -21,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
 import com.styleru.styleruapp.navigation.ScreenKeys;
+import com.styleru.styleruapp.navigation.StyleruNavigator;
 import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
@@ -54,6 +56,9 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     public void onCreate(Bundle savedInstanceState) {
         StyleruApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle!= null && bundle.containsKey(StyleruNavigator.ID) && bundle.getString(StyleruNavigator.ID) != null)
+            Toast.makeText(getContext(), bundle.getString(StyleruNavigator.ID), Toast.LENGTH_SHORT).show();
     }
 
     @Nullable

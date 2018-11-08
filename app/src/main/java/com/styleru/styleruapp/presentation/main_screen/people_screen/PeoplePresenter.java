@@ -6,6 +6,7 @@ import android.view.View;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.ArrayList;
@@ -26,19 +27,19 @@ public class PeoplePresenter extends MvpPresenter<PeopleView> {
     void changeScreen(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.directions_menu:
-                getViewState().onDirectionsClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
                 break;
             case R.id.events_menu:
-                getViewState().onEventsClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
                 break;
             case R.id.profile_menu:
-                getViewState().onProfileClicked(mRouter, null);
+                mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
     }
 
     void onProfileClicked(String id){
-        getViewState().onProfileClicked(mRouter, id);
+        mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT, id);
     }
 
     void provideData(){

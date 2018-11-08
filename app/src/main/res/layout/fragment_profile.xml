@@ -104,16 +104,20 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/profile_links_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_edit_text">
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@+id/phone_text_view">
 
     </android.support.v7.widget.RecyclerView>
 
 
     <include
+        android:id="@+id/bottom_navigation"
         layout="@layout/bottom_navigation_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

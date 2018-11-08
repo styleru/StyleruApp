@@ -37,6 +37,10 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
         links.add(new LinkItem("VK", "id4920"));
         links.add(new LinkItem("Instagram", "ngneecwmk.com"));
         links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
 
         ProfileModel sampleProfile = new ProfileModel("Vlad","Yundin",
                 "Android",
