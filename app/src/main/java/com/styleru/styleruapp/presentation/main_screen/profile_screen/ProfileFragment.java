@@ -1,5 +1,6 @@
 package com.styleru.styleruapp.presentation.main_screen.profile_screen;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,13 +8,15 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -38,6 +41,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     private Unbinder mUnbinder;
     private View mView;
     private LayoutInflater mInflater;
+    private boolean mIsEditable;
     @InjectPresenter ProfilePresenter mPresenter;
     @Inject Provider<ProfilePresenter> mProvider;
     @ProvidePresenter ProfilePresenter getPresenter() {return mProvider.get();}
@@ -56,9 +60,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     public void onCreate(Bundle savedInstanceState) {
         StyleruApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        if (bundle!= null && bundle.containsKey(StyleruNavigator.ID) && bundle.getString(StyleruNavigator.ID) != null)
-            Toast.makeText(getContext(), bundle.getString(StyleruNavigator.ID), Toast.LENGTH_SHORT).show();
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -67,7 +69,19 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
         mUnbinder = ButterKnife.bind(this, mView);
 
+
         return mView;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (mIsEditable)
+        {
+            inflater.inflate(R.menu.menu_profile, menu);
+            MenuItem item = menu.getItem(0);
+            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }
     }
 
     @Override
@@ -80,6 +94,12 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         });
         mInflater = getLayoutInflater();
         mPresenter.provideData();
+
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        getActivity().setActionBar(toolbar);
+        ActionBar actionBar = getActivity().getActionBar();
+
     }
 
     @Override
@@ -90,6 +110,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
 
     @Override
     public void showData(ProfileModel profileItem) {
+        Bundle bundle = getArguments();
+        mIsEditable = !(bundle!= null && bundle.containsKey(StyleruNavigator.ID) && bundle.getString(StyleruNavigator.ID) != null);
         List<LinkItem> links = profileItem.getLinks();
         mFirstNameTextView.setText(profileItem.getFirstName());
         mSecondNameTextView.setText(profileItem.getSecondName());
@@ -99,7 +121,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         Glide.with(mView)
                 .load(profileItem.getPhoto())
                 .into(mProfileImageView);
-        mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links));
+        mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links, mIsEditable));
 
     }
 
