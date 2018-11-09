@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/profile_constraint_layout"
+    android:id="@+id/profile_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Toolbar
@@ -10,19 +10,30 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:title="@string/profile"/>
 
-    <ImageView
-        android:id="@+id/profile_image_view"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/email_text_view"
@@ -70,16 +81,16 @@
         app:layout_constraintStart_toEndOf="@+id/phone_text_view"
         app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
 
-    <TextView
-        android:id="@+id/first_name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        <TextView
+            android:id="@+id/first_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/profile_image_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/second_name_text_view"
@@ -101,28 +112,24 @@
         app:layout_constraintStart_toEndOf="@+id/profile_image_view"
         app:layout_constraintTop_toBottomOf="@+id/second_name_text_view" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/profile_links_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@+id/phone_text_view">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/profile_links_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_text_view">
 
-    </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
 
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 
     <include
         android:id="@+id/bottom_navigation"
         layout="@layout/bottom_navigation_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

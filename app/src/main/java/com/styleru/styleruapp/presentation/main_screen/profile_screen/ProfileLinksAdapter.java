@@ -14,10 +14,12 @@ import java.util.List;
 public class ProfileLinksAdapter extends RecyclerView.Adapter<ProfileLinksAdapter.ProfileLinksHolder> {
     private LayoutInflater mInflater;
     private List<LinkItem> mItemList;
+    private boolean mIsEditable;
 
-    ProfileLinksAdapter(LayoutInflater inflater, List<LinkItem> itemList) {
+    ProfileLinksAdapter(LayoutInflater inflater, List<LinkItem> itemList, boolean isEditable) {
         mInflater = inflater;
         mItemList = itemList;
+        mIsEditable = isEditable;
     }
 
     @NonNull
@@ -45,6 +47,8 @@ public class ProfileLinksAdapter extends RecyclerView.Adapter<ProfileLinksAdapte
             super(itemView);
             mSiteEditText = itemView.findViewById(R.id.site_editText);
             mLinkEditText = itemView.findViewById(R.id.link_editText3);
+            mSiteEditText.setFocusable(mIsEditable);
+            mLinkEditText.setFocusable(mIsEditable);
         }
     }
 }

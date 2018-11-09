@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -54,7 +54,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     @BindView(R.id.directions_text_view) TextView mDirectionsTextView;
     @BindView(R.id.email_edit_text)  EditText mEmailEditText;
     @BindView(R.id.phone_edit_text) EditText mPhoneEditText;
-    @BindView(R.id.profile_constraint_layout) ConstraintLayout mLayout;
+    @BindView(R.id.profile_main_layout) RelativeLayout mLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
