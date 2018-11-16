@@ -7,4 +7,5 @@ public class ScreenKeys {
     public static final String PROFILE_FRAGMENT = "profile";
     public static final String EVENTS_FRAGMENT = "events";
     public static final String PEOPLE_FRAGMENT= "people";
+    public static final String EDIT_PROFILE_FRAGMENT = "edit";
 }

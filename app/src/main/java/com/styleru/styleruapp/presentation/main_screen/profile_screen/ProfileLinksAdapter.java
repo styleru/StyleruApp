@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.styleru.styleruapp.R;
 
@@ -14,12 +14,9 @@ import java.util.List;
 public class ProfileLinksAdapter extends RecyclerView.Adapter<ProfileLinksAdapter.ProfileLinksHolder> {
     private LayoutInflater mInflater;
     private List<LinkItem> mItemList;
-    private boolean mIsEditable;
-
-    ProfileLinksAdapter(LayoutInflater inflater, List<LinkItem> itemList, boolean isEditable) {
+    ProfileLinksAdapter(LayoutInflater inflater, List<LinkItem> itemList) {
         mInflater = inflater;
         mItemList = itemList;
-        mIsEditable = isEditable;
     }
 
     @NonNull
@@ -31,8 +28,9 @@ public class ProfileLinksAdapter extends RecyclerView.Adapter<ProfileLinksAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ProfileLinksHolder profileLinksHolder, int i) {
-        profileLinksHolder.mSiteEditText.setText(mItemList.get(i).getSite());
-        profileLinksHolder.mLinkEditText.setText(mItemList.get(i).getLink());
+        String site = mItemList.get(i).getSite() + ":";
+        profileLinksHolder.mSiteTextView.setText(site);
+        profileLinksHolder.mLinkTextView.setText(mItemList.get(i).getLink());
     }
 
     @Override
@@ -41,14 +39,12 @@ public class ProfileLinksAdapter extends RecyclerView.Adapter<ProfileLinksAdapte
     }
 
     class ProfileLinksHolder extends RecyclerView.ViewHolder{
-        private final EditText mSiteEditText;
-        private final EditText mLinkEditText;
+        private final TextView mSiteTextView;
+        private final TextView mLinkTextView;
         ProfileLinksHolder(@NonNull View itemView) {
             super(itemView);
-            mSiteEditText = itemView.findViewById(R.id.site_editText);
-            mLinkEditText = itemView.findViewById(R.id.link_editText3);
-            mSiteEditText.setFocusable(mIsEditable);
-            mLinkEditText.setFocusable(mIsEditable);
+            mSiteTextView = itemView.findViewById(R.id.site_text_view);
+            mLinkTextView = itemView.findViewById(R.id.link_text_view);
         }
     }
 }

@@ -11,6 +11,7 @@ import com.styleru.styleruapp.presentation.main_screen.directions_screen.Directi
 import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
 import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFragment;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.edit_profile.EditProfileFragment;
 
 import ru.terrakok.cicerone.android.SupportAppNavigator;
 
@@ -48,6 +49,12 @@ public class StyleruNavigator extends SupportAppNavigator{
                 Fragment fragment = new ProfileFragment();
                 fragment.setArguments(bundle);
                 return fragment;
+            case ScreenKeys.EDIT_PROFILE_FRAGMENT:
+                Bundle editBundle = new Bundle();
+                editBundle.putString(ID, "id");
+                Fragment editProfileFragment = new EditProfileFragment();
+                editProfileFragment.setArguments(editBundle);
+                return editProfileFragment;
         }
         return null;
     }

@@ -5,50 +5,42 @@ import android.view.MenuItem;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.domain.interactor.ProfileInteractor;
+import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
 @InjectViewState
 public class ProfilePresenter extends MvpPresenter<ProfileView> {
     private final StyleruRouter mRouter;
+    private final ProfileInteractor mProfileInteractor;
+    private ProfileModel mSampleProfile;
 
-    @Inject ProfilePresenter(StyleruRouter router) { this.mRouter = router;}
+    @Inject ProfilePresenter(StyleruRouter router, ProfileInteractor interactor) {
+        this.mRouter = router;
+        this.mProfileInteractor = interactor;
+    }
 
     void changeScreen(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.directions_menu:
-                getViewState().onDirectionsClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
                 break;
             case R.id.events_menu:
-                getViewState().onEventsClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
                 break;
             case R.id.people_menu:
-                getViewState().onPeopleClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
+                break;
+            case R.id.edit_menu_button:
+                mRouter.navigateTo(ScreenKeys.EDIT_PROFILE_FRAGMENT, mSampleProfile.getID());
                 break;
         }
     }
 
     void provideData(){
-        List<LinkItem> links = new ArrayList<>();
-        links.add(new LinkItem("VK", "id4920"));
-        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
-        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
-        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
-        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
-        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
-        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
-
-        ProfileModel sampleProfile = new ProfileModel("Vlad","Yundin",
-                "Android",
-                "https://pp.userapi.com/c836234/v836234471/2fc01/CfB0TIHo8zE.jpg?ava=1",
-                "ci1p24qh93rrk92k91",
-                "null@gmail.com",
-                "88005553535",
-                links);
-        getViewState().showData(sampleProfile);
+        mSampleProfile = mProfileInteractor.getProfile("id");
+        getViewState().showData(mSampleProfile);
     }
 }

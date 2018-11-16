@@ -1,6 +1,5 @@
 package com.styleru.styleruapp.presentation.main_screen.profile_screen;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,9 +22,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruNavigator;
-import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
 
@@ -52,8 +48,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     @BindView(R.id.first_name_text_view) TextView mFirstNameTextView;
     @BindView(R.id.second_name_text_view) TextView mSecondNameTextView;
     @BindView(R.id.directions_text_view) TextView mDirectionsTextView;
-    @BindView(R.id.email_edit_text)  EditText mEmailEditText;
-    @BindView(R.id.phone_edit_text) EditText mPhoneEditText;
+    @BindView(R.id.email_text_view)  TextView mEmailTextView;
+    @BindView(R.id.phone_text_view) TextView mPhoneTextView;
     @BindView(R.id.profile_main_layout) RelativeLayout mLayout;
 
     @Override
@@ -95,10 +91,8 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         mInflater = getLayoutInflater();
         mPresenter.provideData();
 
-
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         getActivity().setActionBar(toolbar);
-        ActionBar actionBar = getActivity().getActionBar();
 
     }
 
@@ -116,27 +110,18 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         mFirstNameTextView.setText(profileItem.getFirstName());
         mSecondNameTextView.setText(profileItem.getSecondName());
         mDirectionsTextView.setText(profileItem.getDirections());
-        mEmailEditText.setText(profileItem.getEmail());
-        mPhoneEditText.setText(profileItem.getPhoneNumber());
+        mEmailTextView.setText(profileItem.getEmail());
+        mPhoneTextView.setText(profileItem.getPhoneNumber());
         Glide.with(mView)
                 .load(profileItem.getPhoto())
                 .into(mProfileImageView);
-        mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links, mIsEditable));
+        mRecyclerView.setAdapter(new ProfileLinksAdapter(mInflater, links));
 
     }
 
     @Override
-    public void onPeopleClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
-    }
-
-    @Override
-    public void onEventsClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.EVENTS_FRAGMENT);
-    }
-
-    @Override
-    public void onDirectionsClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        mPresenter.changeScreen(item);
+        return super.onOptionsItemSelected(item);
     }
 }

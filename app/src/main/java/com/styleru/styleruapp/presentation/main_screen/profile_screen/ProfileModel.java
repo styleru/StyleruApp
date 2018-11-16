@@ -4,19 +4,19 @@ import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleRecyc
 
 import java.util.List;
 
-public class ProfileModel extends PeopleRecyclerModel {
+public class ProfileModel extends PeopleRecyclerModel{
     private String mEmail;
     private String mPhoneNumber;
     private List<LinkItem> mLinks;
 
-    ProfileModel(String firstName, String secondName, String directions, String photo, String ID, String email, String phoneNumber, List<LinkItem> links) {
+    public ProfileModel(String firstName, String secondName, String directions, String photo, String ID, String email, String phoneNumber, List<LinkItem> links) {
         super(firstName, secondName, directions, photo, ID);
         mEmail = email;
         mPhoneNumber = phoneNumber;
         mLinks = links;
     }
 
-    String getEmail() {
+    public String getEmail() {
         return mEmail;
     }
 
@@ -24,7 +24,7 @@ public class ProfileModel extends PeopleRecyclerModel {
         mEmail = email;
     }
 
-    String getPhoneNumber() {
+    public String getPhoneNumber() {
         return mPhoneNumber;
     }
 
@@ -32,7 +32,7 @@ public class ProfileModel extends PeopleRecyclerModel {
         mPhoneNumber = phoneNumber;
     }
 
-    List<LinkItem> getLinks() {
+    public List<LinkItem> getLinks() {
         return mLinks;
     }
 

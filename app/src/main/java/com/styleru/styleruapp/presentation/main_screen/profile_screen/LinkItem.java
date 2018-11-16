@@ -4,12 +4,12 @@ public class LinkItem {
     private String mSite;
     private String mLink;
 
-    LinkItem(String site, String link) {
+    public LinkItem(String site, String link) {
         mSite = site;
         mLink = link;
     }
 
-    String getSite() {
+    public String getSite() {
         return mSite;
     }
 
