@@ -11,4 +11,10 @@
     <string name="e_mail">E-mail</string>
     <string name="phone">Телефон</string>
     <string name="edit">Редактировать</string>
+    <string name="to_apply">Применить</string>
+    <string name="to_cancel">Отменить</string>
+    <string name="cancel">Отмена</string>
+    <string name="save_changes">Сохранить изменения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>

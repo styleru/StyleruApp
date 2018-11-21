@@ -27,6 +27,16 @@ public class MockedUserDataApi implements IUserDataApi{
         links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
         links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
         links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("лицокнига", "navalnyi2018.com"));
+        links.add(new LinkItem("Instagram", "ngneecwmk.com"));
+        links.add(new LinkItem("Яйцоокнига", "navalnyi2018.com"));
 
         ProfileModel mSampleProfile = new ProfileModel("Vlad","Yundin",
                 "Android",

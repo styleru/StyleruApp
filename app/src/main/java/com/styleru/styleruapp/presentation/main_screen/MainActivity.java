@@ -30,4 +30,16 @@ public class MainActivity extends BaseActivity implements MvpView {
         super.onCreate(savedInstanceState);
         mPresenter.changeScreen();
     }
+
+    /*@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(this, String.valueOf(item.getItemId()), Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()){
+            case R.id.homeAsUp:
+                onBackPressed();
+            case R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
 }
