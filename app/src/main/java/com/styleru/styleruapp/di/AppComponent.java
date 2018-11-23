@@ -24,7 +24,7 @@ public interface AppComponent {
     void inject(LoginActivity loginActivity);
     void inject(MainActivity mainActivity);
     void inject(DirectionsFragment directionsFragment);
-    void inject(EventsFragment eventsFragment);
+    void inject(EventsFragment EventsFragment);
     void inject(PeopleFragment peopleFragment);
     void inject(ProfileFragment profileFragment);
     void inject(EditProfileFragment editProfileFragment);

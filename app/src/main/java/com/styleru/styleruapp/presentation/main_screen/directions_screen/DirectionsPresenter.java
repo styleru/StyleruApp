@@ -16,7 +16,7 @@ import javax.inject.Inject;
 @InjectViewState
 public final class DirectionsPresenter extends MvpPresenter<DirectionsView> {
     private final StyleruRouter mRouter;
-    private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design"};
+    private final String CATEGORIES[] = {"Android", "IOS", "Web", "Design", "Digital marketing", "Game Dev"};
     @Inject
     DirectionsPresenter(StyleruRouter router) {
         this.mRouter = router;
