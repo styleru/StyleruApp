@@ -1,5 +1,6 @@
 package com.styleru.styleruapp.domain.repository;
 
+import com.styleru.styleruapp.presentation.main_screen.events_screen.EventItem;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.LinkItem;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileModel;
 
@@ -46,5 +47,11 @@ public class MockedUserDataApi implements IUserDataApi{
                 "88005553535",
                 links);
         return mSampleProfile;
+    }
+
+    @Override
+    public EventItem getEvent(String id) {
+        return new EventItem("https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Bufotes_oblongus.jpg/275px-Bufotes_oblongus.jpg",
+                "java meetup", "31.12.2018", "red square");
     }
 }

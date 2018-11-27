@@ -9,6 +9,7 @@ import com.styleru.styleruapp.presentation.login_screen.LoginActivity;
 import com.styleru.styleruapp.presentation.main_screen.MainActivity;
 import com.styleru.styleruapp.presentation.main_screen.directions_screen.DirectionsFragment;
 import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
+import com.styleru.styleruapp.presentation.main_screen.events_screen.ParticularEventFragment;
 import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFragment;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.edit_profile.EditProfileFragment;
@@ -28,7 +29,7 @@ public interface AppComponent {
     void inject(PeopleFragment peopleFragment);
     void inject(ProfileFragment profileFragment);
     void inject(EditProfileFragment editProfileFragment);
-
+    void inject(ParticularEventFragment fragment);
     @Component.Builder
     interface Builder {
         AppComponent build();

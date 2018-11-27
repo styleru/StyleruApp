@@ -6,7 +6,7 @@ public class EventItem {
     private String mDate;
     private String mPlace;
 
-    EventItem(String image, String title, String date, String place) {
+    public EventItem(String image, String title, String date, String place) {
         mImage = image;
         mTitle = title;
         mDate = date;

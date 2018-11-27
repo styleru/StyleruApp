@@ -9,10 +9,29 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.bumptech.glide.Glide;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.StyleruApplication;
+import com.styleru.styleruapp.navigation.StyleruNavigator;
 
-public class ParticularEventFragment extends MvpAppCompatFragment {
+import javax.inject.Inject;
+import javax.inject.Provider;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+
+public class ParticularEventFragment extends MvpAppCompatFragment implements ParticularEventView {
+    @InjectPresenter ParticularEventPresenter mPresenter;
+    @Inject Provider<ParticularEventPresenter> mProvidePresenter;
+    @ProvidePresenter
+    ParticularEventPresenter providePresenter(){return mProvidePresenter.get();}
+    @BindView(R.id.event_image_view) ImageView mImageView;
+    @BindView(R.id.particular_event_toolbar) android.support.v7.widget.Toolbar mToolbar;
+    Unbinder mUnbinder;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,10 +40,24 @@ public class ParticularEventFragment extends MvpAppCompatFragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        StyleruApplication.getAppComponent().inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView imageView = view.findViewById(R.id.event_image_view);
-        Glide.with(this).load("https://nashzeleniymir.ru/wp-content/uploads/2016/02/%D0%96%D0%B0%D0%B1%D0%B0-%D1%84%D0%BE%D1%82%D0%BE-1024x683.jpg")
-                .into(imageView);
+        mUnbinder = ButterKnife.bind(this, view);
+        String id = getArguments().getString(StyleruNavigator.ID);
+        mPresenter.provideData(id);
+
+    }
+
+    @Override
+    public void showData(EventItem item) {
+        mToolbar.setTitle(item.getTitle());
+        Glide.with(this).load(item.getImage())
+                .into(mImageView);
     }
 }

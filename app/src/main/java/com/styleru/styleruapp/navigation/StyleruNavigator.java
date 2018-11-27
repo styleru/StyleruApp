@@ -57,7 +57,11 @@ public class StyleruNavigator extends SupportAppNavigator{
                 editProfileFragment.setArguments(editBundle);
                 return editProfileFragment;
             case ScreenKeys.PARTICULAR_EVENT:
-                return new ParticularEventFragment();
+                Bundle eventBundle = new Bundle();
+                eventBundle.putString(ID, "id");
+                Fragment eventFragment = new ParticularEventFragment();
+                eventFragment.setArguments(eventBundle);
+                return eventFragment;
         }
         return null;
     }
