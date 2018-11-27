@@ -4,9 +4,9 @@ package com.styleru.styleruapp.presentation.main_screen.events_screen;
 import com.styleru.styleruapp.R;
 
 public enum EventsPagerEnum {
-    ONLINE(R.string.online, R.layout.fragment_single_recycler_view),
-    MEETING(R.string.meetings, R.layout.fragment_single_recycler_view),
-    CONGREGATIONS(R.string.congregation, R.layout.fragment_single_recycler_view);
+    ONLINE(R.string.online, R.layout.pager_events_online),
+    MEETINGS(R.string.meetings, R.layout.pager_events_meetings),
+    CONGREGATIONS(R.string.congregation, R.layout.pager_events_congregations);
 
     private int mTitleResId;
     private int mLayoutResId;

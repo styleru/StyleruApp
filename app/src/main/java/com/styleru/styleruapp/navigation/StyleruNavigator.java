@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import com.styleru.styleruapp.presentation.main_screen.MainActivity;
 import com.styleru.styleruapp.presentation.main_screen.directions_screen.DirectionsFragment;
 import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
+import com.styleru.styleruapp.presentation.main_screen.events_screen.ParticularEventFragment;
 import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFragment;
 import com.styleru.styleruapp.presentation.main_screen.profile_screen.edit_profile.EditProfileFragment;
@@ -55,6 +56,8 @@ public class StyleruNavigator extends SupportAppNavigator{
                 Fragment editProfileFragment = new EditProfileFragment();
                 editProfileFragment.setArguments(editBundle);
                 return editProfileFragment;
+            case ScreenKeys.PARTICULAR_EVENT:
+                return new ParticularEventFragment();
         }
         return null;
     }

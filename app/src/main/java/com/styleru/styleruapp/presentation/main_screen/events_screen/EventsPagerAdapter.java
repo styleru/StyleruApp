@@ -16,10 +16,14 @@ import java.util.List;
 public class EventsPagerAdapter extends PagerAdapter {
     private Context mContext;
     private List<EventItem> mEventItems;
-
-    EventsPagerAdapter(Context context, List<EventItem> eventItems) {
+    private RecyclerView mOnlineRecyclerView;
+    private RecyclerView mMeetingsRecyclerView;
+    private RecyclerView mCongregationsRecyclerView;
+    private View.OnClickListener mOnClickListener;
+    EventsPagerAdapter(Context context, List<EventItem> eventItems, View.OnClickListener onClickListener) {
         mContext = context;
         mEventItems = eventItems;
+        mOnClickListener = onClickListener;
     }
 
     @NonNull
@@ -29,9 +33,21 @@ public class EventsPagerAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(pagerEnum.getLayoutResId(), container, false);
 
-        RecyclerView recyclerView = layout.findViewById(R.id.pager_recycler_view);
-        EventDataAdapter adapter = new EventDataAdapter(inflater, mEventItems);
-        recyclerView.setAdapter(adapter);
+        EventDataAdapter adapter = new EventDataAdapter(inflater, mEventItems, mOnClickListener);
+        switch (position){
+            case 0:
+                mOnlineRecyclerView = layout.findViewById(R.id.online_recycler_view);
+                mOnlineRecyclerView.setAdapter(adapter);
+                break;
+            case 1:
+                mMeetingsRecyclerView = layout.findViewById(R.id.meetings_recycler_view);
+                mMeetingsRecyclerView.setAdapter(adapter);
+                break;
+            case 2:
+                mCongregationsRecyclerView = layout.findViewById(R.id.congregations_recycler_view);
+                mCongregationsRecyclerView.setAdapter(adapter);
+                break;
+        }
         container.addView(layout);
         return layout;
     }
@@ -57,4 +73,19 @@ public class EventsPagerAdapter extends PagerAdapter {
         EventsPagerEnum pagerEnum = EventsPagerEnum.values()[position];
         return mContext.getString(pagerEnum.getTitleResId());
     }
+
+    void scrollToTop(int position){
+        switch (position){
+            case 0:
+                mOnlineRecyclerView.smoothScrollToPosition(0);
+                break;
+            case 1:
+                mMeetingsRecyclerView.smoothScrollToPosition(0);
+                break;
+            case 2:
+                mCongregationsRecyclerView.smoothScrollToPosition(0);
+                break;
+        }
+    }
+
 }

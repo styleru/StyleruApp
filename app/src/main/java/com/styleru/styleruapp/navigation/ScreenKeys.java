@@ -8,4 +8,5 @@ public class ScreenKeys {
     public static final String EVENTS_FRAGMENT = "events";
     public static final String PEOPLE_FRAGMENT= "people";
     public static final String EDIT_PROFILE_FRAGMENT = "edit";
+    public static final String PARTICULAR_EVENT = "particular_event";
 }

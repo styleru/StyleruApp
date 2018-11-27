@@ -16,16 +16,19 @@ import java.util.List;
 public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.ViewHolder>{
     private LayoutInflater mLayoutInflater;
     private List<EventItem> mEventsItemList;
+    private View.OnClickListener mOnClickListener;
 
-    EventDataAdapter(LayoutInflater layoutInflater, List<EventItem> eventsItemList) {
+    EventDataAdapter(LayoutInflater layoutInflater, List<EventItem> eventsItemList, View.OnClickListener onClickListener) {
         mLayoutInflater = layoutInflater;
         mEventsItemList = eventsItemList;
+        mOnClickListener = onClickListener;
     }
 
     @NonNull
     @Override
     public EventDataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = mLayoutInflater.inflate(R.layout.event_item, viewGroup, false);
+        view.setOnClickListener(mOnClickListener);
         return new EventDataAdapter.ViewHolder(view);
     }
 

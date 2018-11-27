@@ -10,14 +10,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.styleru.styleruapp.R;
 import com.styleru.styleruapp.StyleruApplication;
-import com.styleru.styleruapp.navigation.ScreenKeys;
-import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.List;
 
@@ -31,9 +30,10 @@ import butterknife.Unbinder;
 public class EventsFragment extends MvpAppCompatFragment implements EventsView{
     @BindView(R.id.pager) ViewPager mViewPager;
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
-    @BindView(R.id.tabLayout) TabLayout mTableLayout;
+    @BindView(R.id.tabLayout) TabLayout mTabLayout;
     @InjectPresenter EventsPresenter mPresenter;
     @Inject Provider<EventsPresenter> mProvidePresenter;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
     @ProvidePresenter
     EventsPresenter providePresenter(){return mProvidePresenter.get();}
 
@@ -71,26 +71,31 @@ public class EventsFragment extends MvpAppCompatFragment implements EventsView{
     }
 
     public void showData(List<EventItem> items){
-        EventsPagerAdapter mPagerAdapter = new EventsPagerAdapter(getContext(),items);
+        View.OnClickListener onClickListener = v->{
+            mPresenter.moveToEvent();
+        };
+        EventsPagerAdapter mPagerAdapter = new EventsPagerAdapter(getContext(),items, onClickListener);
         mViewPager.setAdapter(mPagerAdapter);
-        mTableLayout.setupWithViewPager(mViewPager);
-    }
-    @Override
-    public void onPeopleClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                mPagerAdapter.scrollToTop(tab.getPosition());
+
+            }
+        });
     }
 
-    @Override
-    public void onProfileClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
-
-    }
-
-    @Override
-    public void onDirectionsClicked(StyleruRouter router) {
-        router.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
-
-    }
 }
 /*
 

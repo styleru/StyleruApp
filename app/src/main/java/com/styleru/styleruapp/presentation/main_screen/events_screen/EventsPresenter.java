@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.styleru.styleruapp.R;
+import com.styleru.styleruapp.navigation.ScreenKeys;
 import com.styleru.styleruapp.navigation.StyleruRouter;
 
 import java.util.ArrayList;
@@ -24,15 +25,19 @@ public class EventsPresenter extends MvpPresenter<EventsView> {
     void changeScreen(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.directions_menu:
-                getViewState().onDirectionsClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.DIRECTIONS_FRAGMENT);
                 break;
             case R.id.people_menu:
-                getViewState().onPeopleClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.PEOPLE_FRAGMENT);
                 break;
             case R.id.profile_menu:
-                getViewState().onProfileClicked(mRouter);
+                mRouter.replaceScreen(ScreenKeys.PROFILE_FRAGMENT);
                 break;
         }
+    }
+
+    void moveToEvent(){
+        mRouter.navigateTo(ScreenKeys.PARTICULAR_EVENT);
     }
 
     void provideData(){

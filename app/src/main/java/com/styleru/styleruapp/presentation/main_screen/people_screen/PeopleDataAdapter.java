@@ -28,6 +28,7 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
     @Override
     public PeopleDataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = mLayoutInflater.inflate(R.layout.people_item, viewGroup, false);
+        view.setOnClickListener(mOnClickListener);
         return new ViewHolder(view);
     }
 
@@ -39,7 +40,7 @@ public class PeopleDataAdapter extends RecyclerView.Adapter<PeopleDataAdapter.Vi
         Glide.with(viewHolder.mPersonImageView.getContext())
                 .load(item.getPhoto())
                 .into(viewHolder.mPersonImageView);
-        viewHolder.itemView.setOnClickListener(mOnClickListener);
+        //viewHolder.itemView.setOnClickListener(mOnClickListener);
         viewHolder.itemView.setTag(item.getID());
     }
     @Override
