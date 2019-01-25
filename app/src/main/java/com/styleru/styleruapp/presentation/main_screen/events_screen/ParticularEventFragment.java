@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -31,6 +32,9 @@ public class ParticularEventFragment extends MvpAppCompatFragment implements Par
     ParticularEventPresenter providePresenter(){return mProvidePresenter.get();}
     @BindView(R.id.event_image_view) ImageView mImageView;
     @BindView(R.id.particular_event_toolbar) android.support.v7.widget.Toolbar mToolbar;
+    @BindView(R.id.place_text_view) TextView mPlaceTextView;
+    @BindView(R.id.date_text_view) TextView mDateTextView;
+    @BindView(R.id.description_text_view) TextView mDescriptionTextView;
     Unbinder mUnbinder;
     @Nullable
     @Override
@@ -51,12 +55,14 @@ public class ParticularEventFragment extends MvpAppCompatFragment implements Par
         mUnbinder = ButterKnife.bind(this, view);
         String id = getArguments().getString(StyleruNavigator.ID);
         mPresenter.provideData(id);
-
     }
 
     @Override
     public void showData(EventItem item) {
         mToolbar.setTitle(item.getTitle());
+        mPlaceTextView.setText(item.getPlace());
+        mDateTextView.setText(item.getDate());
+        mDescriptionTextView.setText(item.getDescription());
         Glide.with(this).load(item.getImage())
                 .into(mImageView);
     }

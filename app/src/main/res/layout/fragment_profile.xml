@@ -5,12 +5,10 @@
     android:id="@+id/profile_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        style="@style/Toolbar"
         android:layout_alignParentTop="true"
         android:title="@string/profile"/>
 

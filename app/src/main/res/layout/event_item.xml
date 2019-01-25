@@ -30,7 +30,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_info_text_vew"
+        android:id="@+id/event_date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/place_info_text_vew"
+        app:layout_constraintStart_toEndOf="@+id/item_event_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/item_title_text_view" />
+
+    <TextView
+        android:id="@+id/place_info_text_vew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

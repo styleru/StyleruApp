@@ -35,8 +35,9 @@ public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.View
     @Override
     public void onBindViewHolder(@NonNull EventDataAdapter.ViewHolder viewHolder, int i) {
         EventItem item = mEventsItemList.get(i);
-        viewHolder.mInfoTextView.setText(item.getDate() + " " + item.getPlace());
+        viewHolder.mPlaceTextView.setText(item.getPlace());
         viewHolder.mTitleTextView.setText(item.getTitle());
+        viewHolder.mDateTextView.setText(item.getDate());
         Glide.with(viewHolder.mEventImageView.getContext())
                 .load(item.getImage())
                 .into(viewHolder.mEventImageView);
@@ -48,13 +49,15 @@ public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.View
 
     class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView mEventImageView;
-        final TextView mInfoTextView;
+        final TextView mPlaceTextView;
+        final TextView mDateTextView;
         final TextView mTitleTextView;
         ViewHolder(View view){
             super(view);
             mEventImageView = view.findViewById(R.id.item_event_image_view);
             mTitleTextView = view.findViewById(R.id.item_title_text_view);
-            mInfoTextView = view.findViewById(R.id.item_info_text_vew);
+            mPlaceTextView = view.findViewById(R.id.place_info_text_vew);
+            mDateTextView = view.findViewById(R.id.event_date_text_view);
         }
     }
 }

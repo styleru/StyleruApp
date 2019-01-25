@@ -8,11 +8,8 @@
 
     <Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Toolbar"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
         android:title="@string/events"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

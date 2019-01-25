@@ -5,12 +5,14 @@ public class EventItem {
     private String mTitle;
     private String mDate;
     private String mPlace;
+    private String mDescription;
 
-    public EventItem(String image, String title, String date, String place) {
+    public EventItem(String image, String title, String date, String place, String description) {
         mImage = image;
         mTitle = title;
         mDate = date;
         mPlace = place;
+        mDescription = description;
     }
 
     public String getImage() {
@@ -43,5 +45,13 @@ public class EventItem {
 
     public void setPlace(String place) {
         mPlace = place;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
     }
 }
