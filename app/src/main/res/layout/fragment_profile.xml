@@ -1,79 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profile_constraint_layout"
+    android:id="@+id/profile_main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="25dp">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/profile_image_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        android:layout_alignParentTop="true"
+        android:title="@string/profile"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:overScrollMode="never"
+        android:layout_below="@id/toolbar">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@tools:sample/avatars"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/email_text_view"
+        android:id="@+id/email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:text="E-mail"
+        android:text="@string/e_mail"
         android:textSize="20sp"
         android:textColor="@color/colorBlack"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
+
+    <TextView
+        android:id="@+id/phone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/phone"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_label" />
+
+    <TextView
+        android:id="@+id/email_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/phone_label"
         app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
 
     <TextView
         android:id="@+id/phone_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:text="Телефон"
-        android:textSize="20sp"
+
         android:textColor="@color/colorBlack"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/phone_label"
         app:layout_constraintTop_toBottomOf="@+id/email_text_view" />
 
-    <EditText
-        android:id="@+id/email_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phone_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
-
-    <EditText
-        android:id="@+id/phone_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="none"
-        app:layout_constraintBottom_toTopOf="@+id/textView0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phone_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
-
-    <TextView
-        android:id="@+id/first_name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_image_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/first_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/profile_image_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/second_name_text_view"
@@ -95,136 +113,23 @@
         app:layout_constraintStart_toEndOf="@+id/profile_image_view"
         app:layout_constraintTop_toBottomOf="@+id/second_name_text_view" />
 
-    <TextView
-        android:id="@+id/textView0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_text_view" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/profile_links_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_label">
 
-    <EditText
-        android:id="@+id/editText0"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView0"
-        app:layout_constraintTop_toBottomOf="@+id/phone_edit_text" />
+        </android.support.v7.widget.RecyclerView>
 
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/bottom_navigation"
+        layout="@layout/bottom_navigation_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView0" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/editText0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

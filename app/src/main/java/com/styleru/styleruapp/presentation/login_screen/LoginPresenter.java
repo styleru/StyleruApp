@@ -12,7 +12,7 @@ import javax.inject.Inject;
 @InjectViewState
 public final class LoginPresenter extends MvpPresenter<LoginView> {
     private final StyleruRouter mRouter;
-    public AuthorizationInteractor mInteractor;
+    private final AuthorizationInteractor mInteractor;
     @Inject
     LoginPresenter(StyleruRouter router, AuthorizationInteractor interactor) {
         this.mRouter = router;
@@ -22,7 +22,7 @@ public final class LoginPresenter extends MvpPresenter<LoginView> {
     void signIn(String login, String password){
         boolean isSuccessful = mInteractor.isInfoCorrect(login, password); // fake check
         if (isSuccessful){
-            mRouter.navigateTo(ScreenKeys.CATEGORY_ACTIVITY);
+            mRouter.navigateTo(ScreenKeys.MAIN_ACTIVITY);
         }
     }
 }

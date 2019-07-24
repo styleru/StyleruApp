@@ -5,8 +5,14 @@ import android.content.Context;
 import com.styleru.styleruapp.di.module.NavigationModule;
 import com.styleru.styleruapp.di.module.NetworkModule;
 import com.styleru.styleruapp.di.module.RepositoryModule;
-import com.styleru.styleruapp.presentation.category_screen.ChangeCategoryActivity;
 import com.styleru.styleruapp.presentation.login_screen.LoginActivity;
+import com.styleru.styleruapp.presentation.main_screen.MainActivity;
+import com.styleru.styleruapp.presentation.main_screen.directions_screen.DirectionsFragment;
+import com.styleru.styleruapp.presentation.main_screen.events_screen.EventsFragment;
+import com.styleru.styleruapp.presentation.main_screen.events_screen.ParticularEventFragment;
+import com.styleru.styleruapp.presentation.main_screen.people_screen.PeopleFragment;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.ProfileFragment;
+import com.styleru.styleruapp.presentation.main_screen.profile_screen.edit_profile.EditProfileFragment;
 
 import javax.inject.Singleton;
 
@@ -17,8 +23,13 @@ import dagger.Component;
 @Component(modules = {NavigationModule.class, RepositoryModule.class, NetworkModule.class})
 public interface AppComponent {
     void inject(LoginActivity loginActivity);
-    void inject(ChangeCategoryActivity changeCategoryActivity);
-
+    void inject(MainActivity mainActivity);
+    void inject(DirectionsFragment directionsFragment);
+    void inject(EventsFragment EventsFragment);
+    void inject(PeopleFragment peopleFragment);
+    void inject(ProfileFragment profileFragment);
+    void inject(EditProfileFragment editProfileFragment);
+    void inject(ParticularEventFragment fragment);
     @Component.Builder
     interface Builder {
         AppComponent build();
